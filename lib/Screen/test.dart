@@ -44,7 +44,9 @@ class _EventState extends State<Event> {
 
                      
                     return ListView(
-                     scrollDirection: Axis.vertical,
+                      shrinkWrap: true,
+                  physics: NeverScrollableScrollPhysics(),
+                    // scrollDirection: Axis.vertical,
                       children: <Widget>[
                         //1st box
 

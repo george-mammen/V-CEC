@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:proddeccec/Screen/about.dart';
-import 'package:proddeccec/Screen/test.dart';
+import 'package:proddeccec/Screen/event.dart';
 //import 'package:proddeccec/Screen/event2.dart';
 import 'package:proddeccec/widget/size_config.dart';
 

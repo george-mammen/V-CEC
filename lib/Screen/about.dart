@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:proddeccec/widget/size_config.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 
-class About extends StatefulWidget {
-  @override
-  _AboutState createState() => _AboutState();
-}
-
-class _AboutState extends State<About> {
+class About extends StatelessWidget {
+   
+  List<Image> _listOfImages = <Image>[];
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -26,7 +24,8 @@ class _AboutState extends State<About> {
           color: Colors.black, //change your color here
         ),
       ),
-      body: ListView(
+      body:     ListView(
+         // shrinkWrap: true,
         scrollDirection: Axis.vertical,
         children: <Widget>[
           Padding(
@@ -38,20 +37,48 @@ class _AboutState extends State<About> {
               borderRadius: BorderRadius.circular(24.0),
               child: SizedBox(
                 width: SizeConfig.safeBlockHorizontal * 80,
-                height: SizeConfig.safeBlockHorizontal * 100,
-                child: Carousel(
-                  boxFit: BoxFit.contain,
-                  dotBgColor: Colors.transparent,
-                  dotIncreasedColor: Colors.grey,
-                  dotSize: 6.0,
-                  images: [
-                    AssetImage('images/i1.jpg'),
-                    AssetImage('images/i2.jpg'),
-                    AssetImage('images/i3.jpg'),
-                    AssetImage('images/i4.jpg'),
-                    AssetImage('images/i5.jpg'),
-                  ],
-                ),
+                height: SizeConfig.safeBlockHorizontal * 80,
+                
+                child: StreamBuilder<QuerySnapshot>(
+                stream: Firestore.instance.collection('About').snapshots(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return ListView.builder(
+                      
+                        itemCount: snapshot.data.documents.length,
+                        itemBuilder: (BuildContext context, int index) {
+                          _listOfImages = [];
+                          for (int i = 0;
+                              i < snapshot.data.documents[index].data['image'].length;
+                              i++
+                              )
+                               {
+                            _listOfImages.add(Image.network(snapshot
+                                .data.documents[index].data['image'][i],fit:BoxFit.contain));
+                          }
+                return Container(
+                  width: SizeConfig.safeBlockHorizontal * 5 ,
+                  height:SizeConfig.safeBlockVertical * 40 ,
+                  child: Carousel(
+                    boxFit: BoxFit.fill,
+                    dotBgColor: Colors.transparent,
+                    dotIncreasedColor: Colors.lightBlue,
+                    dotSize: 6.0,
+                    images: 
+                     _listOfImages
+                     // AssetImage('images/i1.jpg'),
+                     // AssetImage('images/i2.jpg'),
+                    //  AssetImage('images/i3.jpg'),
+                    //  AssetImage('images/i4.jpg'),
+                    //  AssetImage('images/i5.jpg'),
+                    
+                      ),
+                );
+                        }
+                    );
+                  }
+                }
+                 ),
               ),
             ),
           ),

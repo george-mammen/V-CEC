@@ -1,7 +1,10 @@
+//import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:carousel_pro/carousel_pro.dart';
 import 'package:proddeccec/widget/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:connectivity/connectivity.dart';
+
 
 class About extends StatelessWidget {
    
@@ -39,11 +42,35 @@ class About extends StatelessWidget {
                 width: SizeConfig.safeBlockHorizontal * 80,
                 height: SizeConfig.safeBlockHorizontal * 80,
                 
-                child: StreamBuilder<QuerySnapshot>(
+                child: StreamBuilder(
                 stream: Firestore.instance.collection('About').snapshots(),
+                
+               // getList(
+                 // snapshot?.data[index]?.data['image'] ?? ''
+                //),
                 builder: (context, snapshot) {
-                  if (snapshot.hasData) {
-                    return ListView.builder(
+                  if (!snapshot.hasData){
+                    return Container(
+                      child: Center(
+                       // child: CachedNetworkImage(
+                         // imageUrl: "http://via.placeholder.com/350x150",
+                         // fit: BoxFit.cover,
+                         // progressIndicatorBuilder: (context,url,downloadProgress)
+                         // {
+                         // return  Center(
+                              child:  CircularProgressIndicator()
+                              //Text('hello')
+                              //( value: downloadProgress.progress,),
+                      ),
+                            );
+                          }
+                           //  errorWidget: (context,url,error) => Icon(Icons.error),                 //child: Center(
+                            //  child: 
+                              //Text('hello')             
+                  
+            
+                   else {
+                   return ListView.builder(
                       
                         itemCount: snapshot.data.documents.length,
                         itemBuilder: (BuildContext context, int index) {
@@ -54,25 +81,28 @@ class About extends StatelessWidget {
                               )
                                {
                             _listOfImages.add(Image.network(snapshot
-                                .data.documents[index].data['image'][i],fit:BoxFit.contain));
+                                .data.documents[index].data['image'][i],fit:BoxFit.fill));
                           }
-                return Container(
-                  width: SizeConfig.safeBlockHorizontal * 5 ,
-                  height:SizeConfig.safeBlockVertical * 40 ,
-                  child: Carousel(
-                    boxFit: BoxFit.fill,
-                    dotBgColor: Colors.transparent,
-                    dotIncreasedColor: Colors.lightBlue,
-                    dotSize: 6.0,
-                    images: 
-                     _listOfImages
-                     // AssetImage('images/i1.jpg'),
-                     // AssetImage('images/i2.jpg'),
-                    //  AssetImage('images/i3.jpg'),
-                    //  AssetImage('images/i4.jpg'),
-                    //  AssetImage('images/i5.jpg'),
-                    
-                      ),
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(23.0),
+                                  child: Container(
+                    width: SizeConfig.safeBlockHorizontal * 5 ,
+                    height:SizeConfig.safeBlockVertical * 39,
+                    child: Carousel(
+                      boxFit: BoxFit.fill,
+                      dotBgColor: Colors.transparent,
+                      dotIncreasedColor: Colors.lightBlue,
+                      dotSize: 6.0,
+                      images: 
+                       _listOfImages
+                       // AssetImage('images/i1.jpg'),
+                       // AssetImage('images/i2.jpg'),
+                      //  AssetImage('images/i3.jpg'),
+                      //  AssetImage('images/i4.jpg'),
+                      //  AssetImage('images/i5.jpg'),
+                      
+                        ),
+                  ),
                 );
                         }
                     );

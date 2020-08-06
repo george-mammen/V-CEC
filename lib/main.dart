@@ -5,10 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:proddeccec/Screen/home.dart';
 
 void main() => runApp(
-  //  DevicePreview(
+ //   DevicePreview(
  // builder: (context) => 
   MyApp(),
-  //),
+//),
 );
 
 
@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-     // builder: DevicePreview.appBuilder,
+    // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
       title: 'Proddec CEC',
     //   theme: ThemeData(

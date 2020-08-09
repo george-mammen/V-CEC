@@ -32,7 +32,7 @@ if (await canLaunch(url)) {
         child: ListView(
           children: <Widget>[
             GestureDetector(
-              onDoubleTap: _launchURL,
+              onTap: _launchURL,
                           child: Container(
                 height: MediaQuery.of(context).size.height * .76,
               //  height: SizeConfig.safeBlockVertical * 80,

@@ -7,6 +7,6 @@
      <item>
         <bitmap
             android:gravity="center"
-            android:src="@mipmap/logo"/>
+            android:src="@mipmap/ic_launcher2_foreground"/>
     </item> 
 </layer-list>

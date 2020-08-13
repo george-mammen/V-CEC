@@ -21,7 +21,9 @@ class _NotifyState extends State<Notify> {
         title: Text(
           'Notification',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
+            fontFamily: 'Ubuntu',
+            fontWeight: FontWeight.w700,
+           // fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
@@ -44,23 +46,21 @@ class _NotifyState extends State<Notify> {
                     DocumentSnapshot myNotify = snapshot.data.documents[index];
                     _launchURL1() async {
                       final url = '${myNotify['button1']}';
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                              } else {
-                                    throw 'Could not launch $url' ;
-                                        }
- 
-                                      }
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    }
 
-                                       _launchURL2() async {
+                    _launchURL2() async {
                       final url = '${myNotify['button2']}';
-                        if (await canLaunch(url)) {
-                          await launch(url);
-                              } else {
-                                    throw 'Could not launch $url' ;
-                                        }
- 
-                                      }
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    }
 
                     return ListView(
                       shrinkWrap: true,
@@ -73,14 +73,19 @@ class _NotifyState extends State<Notify> {
                               //     margin: EdgeInsets.all(
                               //       SizeConfig.safeBlockHorizontal * 4),
                               width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height *.58,
+                              height: MediaQuery.of(context).size.height * .43,
                               child: Container(
                                 child: Padding(
                                   padding: EdgeInsets.only(
-                                      top: MediaQuery.of(context).size.height * .02,
-                                      bottom: MediaQuery.of(context).size.height * .01,
-                                      left: MediaQuery.of(context).size.width * .03,
-                                      right: MediaQuery.of(context).size.width * .03),
+                                      top: MediaQuery.of(context).size.height *
+                                          .02,
+                                      bottom:
+                                          MediaQuery.of(context).size.height *
+                                              .01,
+                                      left: MediaQuery.of(context).size.width *
+                                          .03,
+                                      right: MediaQuery.of(context).size.width *
+                                          .03),
                                   child: Material(
                                     color: Colors.white,
                                     elevation: 10.0,
@@ -88,7 +93,9 @@ class _NotifyState extends State<Notify> {
                                     shadowColor: Colors.lightBlue,
                                     child: Center(
                                       child: Padding(
-                                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * 0.03),
+                                        padding: EdgeInsets.all(
+                                            MediaQuery.of(context).size.width *
+                                                0.03),
                                         child: Column(
                                           children: <Widget>[
                                             Container(
@@ -97,7 +104,7 @@ class _NotifyState extends State<Notify> {
                                                   SizeConfig.screenWidth,
                                               height:
                                                   SizeConfig.safeBlockVertical *
-                                                      30,
+                                                      18,
                                               child:
                                                   //Image.asset(
                                                   // "images/i1.jpg",
@@ -110,99 +117,137 @@ class _NotifyState extends State<Notify> {
                                               ),
                                             ),
                                             SizedBox(
-                                              height: MediaQuery.of(context).size.width * .05,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  .05,
                                             ),
                                             Text(
                                               '${myNotify['title']}',
                                               // 'hello',
                                               style: TextStyle(
-                                                  color: Colors.black,
-                                                  fontSize:
-                                                      MediaQuery.of(context)
-                                                              .size
-                                                              .height *
-                                                          .03,
-                                                  fontWeight: FontWeight.bold, 
-                                              //     fontFamily: 'BigNoodle',
+                                                color: Colors.black,
+                                                fontFamily: 'Lekton',
+                                                fontWeight: FontWeight.w700,
+                                                fontSize: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    .03,
+                                                // fontWeight: FontWeight.bold,
+                                                //     fontFamily: 'BigNoodle',
                                               ),
                                             ),
                                             SizedBox(
-                                              height:  MediaQuery.of(context).size.width * .05,
+                                              height: MediaQuery.of(context)
+                                                      .size
+                                                      .width *
+                                                  .05,
                                             ),
                                             ListView(
                                                 shrinkWrap: true,
                                                 physics:
                                                     NeverScrollableScrollPhysics(),
-                                                 // scrollDirection: Ax,
+                                                // scrollDirection: Ax,
                                                 children: <Widget>[
                                                   Text(
                                                     '${myNotify['subtitle']}',
                                                     style: TextStyle(
+                                                      fontFamily: 'Lekton',
+                                                      fontWeight:
+                                                          FontWeight.w400,
                                                       color: Colors.blueGrey,
                                                       fontSize:
                                                           MediaQuery.of(context)
                                                                   .size
                                                                   .height *
                                                               .017,
-                                                    
                                                     ),
                                                   ),
                                                   SizedBox(
-                                              height:  MediaQuery.of(context).size.width * .05,
-                                            ),
+                                                    height:
+                                                        MediaQuery.of(context)
+                                                                .size
+                                                                .width *
+                                                            .05,
+                                                  ),
                                                   Row(
-                                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                                                    
-                                                    children: <Widget>[
-                                                      SizedBox(
-                                                 //   width: MediaQuery.of(context).size.width ,
-                                                           
-                                                        height:MediaQuery.of(context).size.height * .03,
-                                                                
-                                                        child: FlatButton(
-                                                          textColor: Colors.blue,
-                                                          highlightColor: Colors.white,
-                                                         // textColor: ,
-                                                          onPressed: _launchURL1,
-                                                          child: Text('${myNotify['link1']}', 
-                                                          style: TextStyle(
-                                                      color: Colors.blue,
-                                                      fontSize:
-                                                          MediaQuery.of(context)
+                                                      mainAxisAlignment:
+                                                          MainAxisAlignment
+                                                              .spaceEvenly,
+                                                      children: <Widget>[
+                                                        SizedBox(
+                                                          //   width: MediaQuery.of(context).size.width ,
+
+                                                          height: MediaQuery.of(
+                                                                      context)
                                                                   .size
                                                                   .height *
-                                                              .025,
-                                                    ),
-                                                          )
+                                                              .03,
+
+                                                          child: FlatButton(
+                                                              textColor:
+                                                                  Colors.blue,
+                                                              highlightColor:
+                                                                  Colors.white,
+                                                              // textColor: ,
+                                                              onPressed:
+                                                                  _launchURL1,
+                                                              child: Text(
+                                                                '${myNotify['link1']}',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      'Ubuntu',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Colors
+                                                                      .blue,
+                                                                  fontSize: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      .025,
+                                                                ),
+                                                              )),
                                                         ),
-                                                      ),
-                                                  
-                                                  
-                                                   SizedBox(
-                                                 //   width: MediaQuery.of(context).size.width ,
-                                                       
-                                                    height:MediaQuery.of(context).size.height * .03,
-                                                            
-                                                    child: FlatButton(
-                                                      textColor: Colors.blue,
-                                                      highlightColor: Colors.white,
-                                                     // textColor: ,
-                                                      onPressed: _launchURL2,
-                                                      child: Text('${myNotify['link2']}', 
-                                                      style: TextStyle(
-                                                      color: Colors.blue,
-                                                      fontSize:
-                                                          MediaQuery.of(context)
+                                                        SizedBox(
+                                                          //   width: MediaQuery.of(context).size.width ,
+
+                                                          height: MediaQuery.of(
+                                                                      context)
                                                                   .size
                                                                   .height *
-                                                              .025,
-                                                    ),
-                                                      )
-                                                    ),
-                                                  ),
-                                                    ]
-                                                  ),
-                                                
+                                                              .03,
+
+                                                          child: FlatButton(
+                                                              textColor:
+                                                                  Colors.blue,
+                                                              highlightColor:
+                                                                  Colors.white,
+                                                              // textColor: ,
+                                                              onPressed:
+                                                                  _launchURL2,
+                                                              child: Text(
+                                                                '${myNotify['link2']}',
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      'Ubuntu',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Colors
+                                                                      .blue,
+                                                                  fontSize: MediaQuery.of(
+                                                                              context)
+                                                                          .size
+                                                                          .height *
+                                                                      .025,
+                                                                ),
+                                                              )),
+                                                        ),
+                                                      ]),
                                                 ])
                                           ],
                                         ),
@@ -222,5 +267,3 @@ class _NotifyState extends State<Notify> {
     );
   }
 }
-
-

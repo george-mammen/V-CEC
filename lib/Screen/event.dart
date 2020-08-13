@@ -17,9 +17,11 @@ class _EventState extends State<Event> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Event',
+          'Events',
           style: TextStyle(
-            fontWeight: FontWeight.bold,
+            fontFamily: 'Ubuntu',
+            fontWeight: FontWeight.w700,
+           // fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
@@ -34,7 +36,7 @@ class _EventState extends State<Event> {
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
-              return new Text('No Event');
+              return Center(child: new Text('No Event'));
             } else if (snapshot.hasError) {
               const Text('No data avaible right now');
             } else {
@@ -81,10 +83,11 @@ class _EventState extends State<Event> {
                                                     child: Text(
                                                   '${myEvent['date_1']}',
                                                   style: TextStyle(
-                                                      color: Colors.black54,
-                                                      fontSize: 24.0,
-                                                      fontWeight:
-                                                          FontWeight.bold),
+                                                    fontFamily: 'Ubuntu',
+                                                    fontWeight: FontWeight.w700,
+                                                    color: Colors.black54,
+                                                    fontSize: 24.0,
+                                                  ),
                                                 )),
                                               ),
                                               SizedBox(
@@ -103,10 +106,12 @@ class _EventState extends State<Event> {
                                                         child: Text(
                                                       '${myEvent['title_1']}',
                                                       style: TextStyle(
-                                                          color: Colors.black,
-                                                          fontSize: 22.0,
-                                                          fontWeight:
-                                                              FontWeight.bold),
+                                                        fontFamily: 'Ubuntu',
+                                                        fontWeight:
+                                                            FontWeight.w700,
+                                                        color: Colors.black,
+                                                        fontSize: 22.0,
+                                                      ),
                                                     )),
                                                     SizedBox(
                                                       height: 10,
@@ -115,6 +120,9 @@ class _EventState extends State<Event> {
                                                         child: Text(
                                                       '${myEvent['details_1_a']}',
                                                       style: TextStyle(
+                                                        fontFamily: 'Ubuntu',
+                                                        fontWeight:
+                                                            FontWeight.w700,
                                                         color: Colors.black54,
                                                         fontSize: 18.0,
                                                       ),
@@ -123,6 +131,9 @@ class _EventState extends State<Event> {
                                                         child: Text(
                                                       '${myEvent['details_1_b']}',
                                                       style: TextStyle(
+                                                        fontFamily: 'Ubuntu',
+                                                        fontWeight:
+                                                            FontWeight.w700,
                                                         color: Colors.black54,
                                                         fontSize: 18.0,
                                                       ),

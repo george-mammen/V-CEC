@@ -8,9 +8,9 @@ import 'package:proddeccec/Screen/home.dart';
 
 
 void main() => runApp(
- //   DevicePreview(
+//    DevicePreview(
  // builder: (context) => 
- // PushNotificationsManager(),
+ 
   MyApp(),
 //),
 );
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
       
     // builder: DevicePreview.appBuilder,
       debugShowCheckedModeBanner: false,
-      title: 'Proddec CEC',
+      title: 'CeApp',
            home: 
        HomePage()
        );

@@ -9,6 +9,9 @@
         android:name="io.flutter.app.FlutterApplication"
         android:label="CeApp"
         android:icon="@mipmap/launcher_icon">
+    <meta-data
+        android:name="com.google.firebase.messaging.default_notification_icon"
+        android:resource="@mipmap/ic_launcher2_foreground" />
         <activity
             android:name=".MainActivity"
             android:screenOrientation="portrait"
@@ -34,6 +37,8 @@
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
               />
+         <!--   -->
+                
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

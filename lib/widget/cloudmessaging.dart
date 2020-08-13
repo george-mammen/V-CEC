@@ -12,11 +12,18 @@ class PushNotificationsManager {
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   bool _initialized = false;
-
+  //FirebaseMessaging firebaseMessaging = new FirebaseMessaging();
+  
   Future<void> init() async {
     if (!_initialized) {
       // For iOS request permission first.
-      _firebaseMessaging.requestNotificationPermissions();
+      _firebaseMessaging.requestNotificationPermissions(
+        const IosNotificationSettings(
+      sound:true,
+      alert:true,
+      badge:true
+      )
+      );
       _firebaseMessaging.configure();
 
       // For testing purposes print the Firebase Messaging token
@@ -25,5 +32,9 @@ class PushNotificationsManager {
       
       _initialized = true;
     }
-  }
-}
+  
+
+    
+    
+  
+}}

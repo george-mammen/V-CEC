@@ -28,10 +28,12 @@ dependencies:
   flutter_launcher_icons: ^0.7.5
   
   
-  cloud_firestore: ^0.13.5
+  cloud_firestore: ^0.13.7
   connectivity: ^0.4.9 
   cached_network_image:
   firebase_messaging: ^6.0.16
+  eva_icons_flutter: ^2.0.1
+
 
   #firebase_core: ^0.4.5
   #firebase_auth: ^0.16.1
@@ -90,14 +92,21 @@ flutter:
   # "family" key with the font family name, and a "fonts" key with a
   # list giving the asset and other descriptors for the font. For
   # example:
- # fonts:
-  #  - family: Arvo
-  #    fonts:
-  #      - asset: fonts/Arvo-Bold.ttf     
-  #      - weight: 700 
-  #  - family: BigNoodle
-  #    fonts:
-   #     - asset: fonts/big_noodle_titling.ttf
+  fonts:
+    - family: Ubuntu
+      fonts:
+        - asset: font/Ubuntu/Ubuntu-Bold.ttf
+          weight: 700
+        - asset: font/Ubuntu/Ubuntu-Light.ttf
+          weight: 300
+        - asset: font/Ubuntu/Ubuntu-Regular.ttf 
+          weight: 400 
+    - family: Lekton
+      fonts:
+        - asset: font/Lekton/Lekton-Bold.ttf
+          weight: 700
+        - asset: font/Lekton/Lekton-Regular.ttf
+          weight: 400
 
   #       - asset: fonts/TrajanPro_Bold.ttf
   #         weight: 700

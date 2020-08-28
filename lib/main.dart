@@ -2,20 +2,27 @@
 
 //import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
+//import 'package:proddeccec/Screen/addevent.dart';
 import 'package:proddeccec/Screen/home.dart';
-//import 'package:proddeccec/widget/cloudmessaging.dart';
-//import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 
-void main() => runApp(
-//    DevicePreview(
- // builder: (context) => 
+
+
+void main()
+//=>
+  async{
+   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(); 
+  runApp(
+    //DevicePreview(
+  //builder: (context) => 
  
   MyApp(),
 //),
 );
 
-
+}
 class MyApp extends StatelessWidget {
 
   @override
@@ -30,7 +37,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'CeApp',
            home: 
-       HomePage()
+      HomePage()
        );
   }
 }

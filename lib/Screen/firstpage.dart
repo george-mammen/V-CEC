@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-//import 'package:proddeccec/Screen/about.dart';
-import 'package:proddeccec/Screen/event.dart';
+import 'package:proddeccec/Screen/Forum.dart';
+//import 'package:proddeccec/Screen/proddec.dart';
 import 'package:proddeccec/Screen/notification.dart';
-//import 'package:proddeccec/Screen/event2.dart';
-import 'package:proddeccec/widget/size_config.dart';
+import 'package:proddeccec/backend/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+
 
 class FirstPage extends StatefulWidget {
   @override
@@ -19,25 +19,25 @@ class _FirstPageState extends State<FirstPage> {
     SizeConfig().init(context);
     return Scaffold(
         body: StreamBuilder(
-            stream: Firestore.instance.collection('Firstpage').snapshots(),
+            stream: FirebaseFirestore.instance.collection('Firstpage').snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
                 return Center(child: new Text('No Notification'));
               } else {
                 return ListView.builder(
-                    itemCount: snapshot.data.documents.length,
+                    itemCount: snapshot.data.docs.length,
                     itemBuilder: (context, index) {
-                      DocumentSnapshot first = snapshot.data.documents[index];
+                      DocumentSnapshot first = snapshot.data.docs[index];
                       _launchURL1() async {
-                        final url = '${first['link1']}';
+                        final url = first.data()['link1'];
                         if (await canLaunch(url)) {
                           await launch(url);
                         }
                       }
 
                       _launchURL2() async {
-                        final url = '${first['link2']}';
+                        final url = first.data()['link2'];
                         if (await canLaunch(url)) {
                           await launch(url);
                         }
@@ -79,7 +79,7 @@ class _FirstPageState extends State<FirstPage> {
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
                                      FlatButton(
-                                          highlightColor: Colors.amberAccent,
+                                          highlightColor: Colors.blue[300],
                                           shape: RoundedRectangleBorder(
                                               borderRadius:
                                                   BorderRadius.circular(10),
@@ -121,11 +121,11 @@ class _FirstPageState extends State<FirstPage> {
                                           Navigator.push(
                                               context,
                                               MaterialPageRoute(
-                                                builder: (context) => Event(),
+                                                builder: (context) => Forum(),
                                               ));
                                         },
                                         child: Text(
-                                          "   Events   ",
+                                          "   Forums   ",
                                           style: TextStyle(
                                             fontFamily: 'Ubuntu',
                                             fontWeight: FontWeight.w400,

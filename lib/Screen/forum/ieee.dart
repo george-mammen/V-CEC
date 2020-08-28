@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proddeccec/widget/size_config.dart';
+import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 //import 'package:firebase_core/firebase_core.dart';
 //import 'package:firebase_auth/firebase_auth.dart';
 
-class Event extends StatefulWidget {
+class Event1 extends StatefulWidget {
   @override
-  _EventState createState() => _EventState();
+  _Event1State createState() => _Event1State();
 }
 
-class _EventState extends State<Event> {
+class _Event1State extends State<Event1> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -21,7 +21,7 @@ class _EventState extends State<Event> {
           style: TextStyle(
             fontFamily: 'Ubuntu',
             fontWeight: FontWeight.w700,
-           // fontWeight: FontWeight.bold,
+            // fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
@@ -63,8 +63,8 @@ class _EventState extends State<Event> {
                                   borderRadius: BorderRadius.circular(24.0),
                                   shadowColor: Color(0x802196F3),
                                   child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                   // mainAxisAlignment:
+                                     //   MainAxisAlignment.spaceBetween,
                                     children: <Widget>[
                                       Container(
                                         child: Padding(
@@ -76,26 +76,19 @@ class _EventState extends State<Event> {
                                             mainAxisAlignment:
                                                 MainAxisAlignment.spaceEvenly,
                                             children: <Widget>[
-                                              Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0),
-                                                child: Container(
-                                                    child: Text(
-                                                  '${myEvent['date_1']}',
-                                                  style: TextStyle(
-                                                    fontFamily: 'Ubuntu',
-                                                    fontWeight: FontWeight.w700,
-                                                    color: Colors.black54,
-                                                    fontSize: 24.0,
-                                                  ),
-                                                )),
-                                              ),
                                               SizedBox(
-                                                height: 10,
+                                                height: MediaQuery.of(context)
+                                                        .size
+                                                        .height *
+                                                    .01,
                                               ),
                                               Padding(
-                                                padding: const EdgeInsets.only(
-                                                    left: 8.0),
+                                                padding: EdgeInsets.only(
+                                                  left: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      .02,
+                                                ),
                                                 child: Container(
                                                     child: Column(
                                                   mainAxisAlignment:
@@ -104,40 +97,79 @@ class _EventState extends State<Event> {
                                                   children: <Widget>[
                                                     Container(
                                                         child: Text(
-                                                      '${myEvent['title_1']}',
+                                                      myEvent.data()['title_1'],
                                                       style: TextStyle(
                                                         fontFamily: 'Ubuntu',
                                                         fontWeight:
                                                             FontWeight.w700,
                                                         color: Colors.black,
-                                                        fontSize: 22.0,
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            .04,
                                                       ),
                                                     )),
                                                     SizedBox(
-                                                      height: 10,
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height *
+                                                              .02,
                                                     ),
                                                     Container(
                                                         child: Text(
-                                                      '${myEvent['details_1_a']}',
+                                                      myEvent.data()['details_1_a'],
                                                       style: TextStyle(
-                                                        fontFamily: 'Ubuntu',
+                                                        fontFamily: 'Lekton',
                                                         fontWeight:
                                                             FontWeight.w700,
                                                         color: Colors.black54,
-                                                        fontSize: 18.0,
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            .025,
                                                       ),
                                                     )),
                                                     Container(
                                                         child: Text(
-                                                      '${myEvent['details_1_b']}',
+                                                      myEvent.data()['details_1_b'],
                                                       style: TextStyle(
-                                                        fontFamily: 'Ubuntu',
+                                                        fontFamily: 'Lekton',
                                                         fontWeight:
                                                             FontWeight.w700,
                                                         color: Colors.black54,
-                                                        fontSize: 18.0,
+                                                        fontSize: MediaQuery.of(
+                                                                    context)
+                                                                .size
+                                                                .height *
+                                                            .025,
                                                       ),
                                                     )),
+                                                    SizedBox(
+                                                      height:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .height *
+                                                              .02,
+                                                    ),
+                                                    Padding(
+                                                      padding:
+                                                          const EdgeInsets.only(
+                                                              left: 8.0),
+                                                      child: Container(
+                                                          child: Text(
+                                                        myEvent.data()['date_1'],
+                                                        style: TextStyle(
+                                                          fontFamily: 'Ubuntu',
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color: Colors.blue,
+                                                          fontSize: 24.0,
+                                                        ),
+                                                      )),
+                                                    ),
                                                   ],
                                                 )),
                                               ),
@@ -145,22 +177,32 @@ class _EventState extends State<Event> {
                                           ),
                                         ),
                                       ),
-                                      SizedBox(
-                                        width:
-                                            SizeConfig.safeBlockHorizontal * 18,
-                                      ),
-                                      Container(
-                                        width:
-                                            SizeConfig.safeBlockHorizontal * 60,
-                                        height:
-                                            SizeConfig.safeBlockHorizontal * 55,
-                                        child: ClipRRect(
-                                          borderRadius:
-                                              new BorderRadius.circular(24.0),
-                                          child: Image.network(
-                                            '${myEvent['image_1']}',
-                                            fit: BoxFit.fill,
-                                            alignment: Alignment.topRight,
+                                      // SizedBox(
+                                      // width:
+                                      //     SizeConfig.safeBlockHorizontal * 18,
+                                      //),
+                                      Align(
+                                        alignment: Alignment.centerRight,
+                                        child: Padding(
+                                          padding:
+                                               EdgeInsets.only(left: 70.0),
+                                          child: Container(
+                                            width:
+                                                SizeConfig.safeBlockHorizontal *
+                                                    60,
+                                            height:
+                                                SizeConfig.safeBlockHorizontal *
+                                                    55,
+                                            child: ClipRRect(
+                                              borderRadius:
+                                                  new BorderRadius.circular(
+                                                      24.0),
+                                              child: Image.network(
+                                                myEvent.data()['image_1'],
+                                                fit: BoxFit.fill,
+                                                alignment: Alignment.topRight,
+                                              ),
+                                            ),
                                           ),
                                         ),
                                       ),

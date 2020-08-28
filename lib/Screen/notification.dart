@@ -1,11 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proddeccec/widget/size_config.dart';
+import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
-
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
 
 class Notify extends StatefulWidget {
   @override
@@ -19,33 +16,40 @@ class _NotifyState extends State<Notify> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'Notification',
+          'Notice',
           style: TextStyle(
             fontFamily: 'Ubuntu',
             fontWeight: FontWeight.w700,
-           // fontWeight: FontWeight.bold,
             color: Colors.black,
           ),
         ),
         centerTitle: true,
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
-          color: Colors.black, //change your color here
+          //back button colour
+          color: Colors.black,
         ),
       ),
       body: StreamBuilder(
-          stream: Firestore.instance.collection('Notification').snapshots(),
+          stream: FirebaseFirestore.instance.collection('Notification').snapshots(),
           builder:
-              (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+              (BuildContext context,  snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: new Text('No Notification'));
+              return Center(
+                  child: new Text('Loading',
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontFamily: 'Lekton',
+                          fontWeight: FontWeight.w700,
+                          fontSize: 25.0)));
             } else {
               return ListView.builder(
                   itemCount: snapshot.data.documents.length,
                   itemBuilder: (context, index) {
                     DocumentSnapshot myNotify = snapshot.data.documents[index];
+
                     _launchURL1() async {
-                      final url = '${myNotify['button1']}';
+                      final url = myNotify.data()['button1'];
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {
@@ -54,7 +58,7 @@ class _NotifyState extends State<Notify> {
                     }
 
                     _launchURL2() async {
-                      final url = '${myNotify['button2']}';
+                      final url = myNotify.data()['button2'];
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {
@@ -62,204 +66,80 @@ class _NotifyState extends State<Notify> {
                       }
                     }
 
-                    return ListView(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      // scrollDirection: Axis.vertical,
-                      children: <Widget>[
-                        Stack(
+                    return Container(
+                      margin: EdgeInsets.all(10.0),
+                      child: Card(
+                        shadowColor: Colors.blueAccent,
+                        elevation: 10.0,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(MediaQuery.of(context).size.height * 0.02),
+                        ),
+                        child: Column(
                           children: <Widget>[
                             Container(
-                              //     margin: EdgeInsets.all(
-                              //       SizeConfig.safeBlockHorizontal * 4),
-                              width: MediaQuery.of(context).size.width,
-                              height: MediaQuery.of(context).size.height * .43,
-                              child: Container(
-                                child: Padding(
-                                  padding: EdgeInsets.only(
-                                      top: MediaQuery.of(context).size.height *
-                                          .02,
-                                      bottom:
-                                          MediaQuery.of(context).size.height *
-                                              .01,
-                                      left: MediaQuery.of(context).size.width *
-                                          .03,
-                                      right: MediaQuery.of(context).size.width *
-                                          .03),
-                                  child: Material(
-                                    color: Colors.white,
-                                    elevation: 10.0,
-                                    // borderRadius: BorderRadius.circular(24.0),
-                                    shadowColor: Colors.lightBlue,
-                                    child: Center(
-                                      child: Padding(
-                                        padding: EdgeInsets.all(
-                                            MediaQuery.of(context).size.width *
-                                                0.03),
-                                        child: Column(
-                                          children: <Widget>[
-                                            Container(
-                                              width: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  SizeConfig.screenWidth,
-                                              height:
-                                                  SizeConfig.safeBlockVertical *
-                                                      18,
-                                              child:
-                                                  //Image.asset(
-                                                  // "images/i1.jpg",
-                                                  // fit: BoxFit.fill
-                                                  //),
-                                                  Image.network(
-                                                '${myNotify['image']}',
-                                                fit: BoxFit.contain,
-                                                //        alignment: Alignment.topRight,
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  .05,
-                                            ),
-                                            Text(
-                                              '${myNotify['title']}',
-                                              // 'hello',
-                                              style: TextStyle(
-                                                color: Colors.black,
-                                                fontFamily: 'Lekton',
-                                                fontWeight: FontWeight.w700,
-                                                fontSize: MediaQuery.of(context)
-                                                        .size
-                                                        .height *
-                                                    .03,
-                                                // fontWeight: FontWeight.bold,
-                                                //     fontFamily: 'BigNoodle',
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              height: MediaQuery.of(context)
-                                                      .size
-                                                      .width *
-                                                  .05,
-                                            ),
-                                            ListView(
-                                                shrinkWrap: true,
-                                                physics:
-                                                    NeverScrollableScrollPhysics(),
-                                                // scrollDirection: Ax,
-                                                children: <Widget>[
-                                                  Text(
-                                                    '${myNotify['subtitle']}',
-                                                    style: TextStyle(
-                                                      fontFamily: 'Lekton',
-                                                      fontWeight:
-                                                          FontWeight.w400,
-                                                      color: Colors.blueGrey,
-                                                      fontSize:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              .017,
-                                                    ),
-                                                  ),
-                                                  SizedBox(
-                                                    height:
-                                                        MediaQuery.of(context)
-                                                                .size
-                                                                .width *
-                                                            .05,
-                                                  ),
-                                                  Row(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      children: <Widget>[
-                                                        SizedBox(
-                                                          //   width: MediaQuery.of(context).size.width ,
+                              width: SizeConfig.safeBlockHorizontal * SizeConfig.screenWidth,
+                              height: SizeConfig.safeBlockVertical * 18,
+                              child: Image.network(
+                                myNotify.data()['image'],
+                                fit: BoxFit.fitHeight,
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
+                              child: Text(
+                                myNotify.data()['title'], style: TextStyle(
+                                color: Colors.black,
+                                fontFamily: 'Lekton',
+                                fontWeight: FontWeight.w700,
+                                fontSize: MediaQuery.of(context).size.height * .03,
 
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              .03,
-
-                                                          child: FlatButton(
-                                                              textColor:
-                                                                  Colors.blue,
-                                                              highlightColor:
-                                                                  Colors.white,
-                                                              // textColor: ,
-                                                              onPressed:
-                                                                  _launchURL1,
-                                                              child: Text(
-                                                                '${myNotify['link1']}',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontFamily:
-                                                                      'Ubuntu',
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  color: Colors
-                                                                      .blue,
-                                                                  fontSize: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .height *
-                                                                      .025,
-                                                                ),
-                                                              )),
-                                                        ),
-                                                        SizedBox(
-                                                          //   width: MediaQuery.of(context).size.width ,
-
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              .03,
-
-                                                          child: FlatButton(
-                                                              textColor:
-                                                                  Colors.blue,
-                                                              highlightColor:
-                                                                  Colors.white,
-                                                              // textColor: ,
-                                                              onPressed:
-                                                                  _launchURL2,
-                                                              child: Text(
-                                                                '${myNotify['link2']}',
-                                                                style:
-                                                                    TextStyle(
-                                                                  fontFamily:
-                                                                      'Ubuntu',
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .w700,
-                                                                  color: Colors
-                                                                      .blue,
-                                                                  fontSize: MediaQuery.of(
-                                                                              context)
-                                                                          .size
-                                                                          .height *
-                                                                      .025,
-                                                                ),
-                                                              )),
-                                                        ),
-                                                      ]),
-                                                ])
-                                          ],
-                                        ),
-                                      ),
-                                    ),
-                                  ),
+                              ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
+                              child: Center(
+                                child: Text(
+                                  myNotify.data()['subtitle'], style: TextStyle(
+                                  fontFamily: 'Lekton',
+                                  fontWeight: FontWeight.w400,
+                                  color: Colors.blueGrey,
+                                  fontSize: MediaQuery.of(context).size.height * .017,
+                                ),
                                 ),
                               ),
                             ),
+
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: <Widget>[
+                                  FlatButton(
+                                      onPressed: _launchURL1,
+                                      child: Text(
+                                        myNotify.data()['link1'],
+                                        style: TextStyle(
+                                          fontFamily: 'Ubuntu',
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.blue,
+                                          fontSize: MediaQuery.of(context).size.height *.025,
+                                        ),
+                                      )),
+                                  FlatButton(
+                                      onPressed: _launchURL2,
+                                      child: Text(
+                                        myNotify.data()['link2'],
+                                        style: TextStyle(
+                                          fontFamily: 'Ubuntu',
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.blue,
+                                          fontSize: MediaQuery.of(context).size.height *.025,
+                                        ),
+                                      )),
+                                ])
                           ],
                         ),
-                      ],
+
+                      ),
                     );
                   });
             }
@@ -267,3 +147,9 @@ class _NotifyState extends State<Notify> {
     );
   }
 }
+
+
+// Developed by Arjun Vishnu Varma.
+// Date: August 2020.
+// Contact: arjun.varma9@gmail.com
+// On behalf: PRODDEC CEC @ 2020

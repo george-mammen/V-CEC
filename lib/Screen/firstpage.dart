@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:proddeccec/Screen/Forum.dart';
 //import 'package:proddeccec/Screen/proddec.dart';
-import 'package:proddeccec/Screen/notification.dart';
+import 'package:proddeccec/Screen/notification/notification.dart';
 import 'package:proddeccec/backend/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
@@ -23,7 +23,7 @@ class _FirstPageState extends State<FirstPage> {
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
-                return Center(child: new Text('No Notification'));
+                return Center(child: new Text('Welcome'));
               } else {
                 return ListView.builder(
                     itemCount: snapshot.data.docs.length,

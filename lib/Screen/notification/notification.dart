@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:proddeccec/Screen/notification/login.dart';
 import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -24,6 +25,20 @@ class _NotifyState extends State<Notify> {
           ),
         ),
         centerTitle: true,
+         actions: [
+          IconButton(
+            icon: Icon(Icons.add),
+            onPressed:(){
+              Navigator.push(
+                         context,
+                     MaterialPageRoute(
+                          builder: (context) =>
+                             LoginPage()
+                    ),
+                    );
+            } ,
+          )
+        ],
         backgroundColor: Colors.white,
         iconTheme: IconThemeData(
           //back button colour
@@ -31,7 +46,7 @@ class _NotifyState extends State<Notify> {
         ),
       ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('Notification').snapshots(),
+          stream: FirebaseFirestore.instance.collection('eNotification').snapshots(),
           builder:
               (BuildContext context,  snapshot) {
             if (!snapshot.hasData) {
@@ -49,7 +64,7 @@ class _NotifyState extends State<Notify> {
                     DocumentSnapshot myNotify = snapshot.data.documents[index];
 
                     _launchURL1() async {
-                      final url = myNotify.data()['button1'];
+                      final url = myNotify.data()['link1'];
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {
@@ -58,13 +73,23 @@ class _NotifyState extends State<Notify> {
                     }
 
                     _launchURL2() async {
-                      final url = myNotify.data()['button2'];
+                      final url = myNotify.data()['link2'];
                       if (await canLaunch(url)) {
                         await launch(url);
                       } else {
                         throw 'Could not launch $url';
                       }
                     }
+
+                     _launchURL3() async {
+                      final url = myNotify.data()['link3'];
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    }
+
 
                     return Container(
                       margin: EdgeInsets.all(10.0),
@@ -100,7 +125,7 @@ class _NotifyState extends State<Notify> {
                               padding: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
                               child: Center(
                                 child: Text(
-                                  myNotify.data()['subtitle'], style: TextStyle(
+                                  myNotify.data()['details'], style: TextStyle(
                                   fontFamily: 'Lekton',
                                   fontWeight: FontWeight.w400,
                                   color: Colors.blueGrey,
@@ -116,7 +141,7 @@ class _NotifyState extends State<Notify> {
                                   FlatButton(
                                       onPressed: _launchURL1,
                                       child: Text(
-                                        myNotify.data()['link1'],
+                                        myNotify.data()['button1'],
                                         style: TextStyle(
                                           fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.w700,
@@ -127,7 +152,18 @@ class _NotifyState extends State<Notify> {
                                   FlatButton(
                                       onPressed: _launchURL2,
                                       child: Text(
-                                        myNotify.data()['link2'],
+                                        myNotify.data()['button2'],
+                                        style: TextStyle(
+                                          fontFamily: 'Ubuntu',
+                                          fontWeight: FontWeight.w700,
+                                          color: Colors.blue,
+                                          fontSize: MediaQuery.of(context).size.height *.025,
+                                        ),
+                                      )),
+                                      FlatButton(
+                                      onPressed: _launchURL3,
+                                      child: Text(
+                                        myNotify.data()['button3'],
                                         style: TextStyle(
                                           fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.w700,

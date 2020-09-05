@@ -4,13 +4,13 @@ import 'package:uuid/uuid.dart';
 
 class EventService{
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  String ref = 'eproddec2';
+  String ref = 'eNcc';
 
 
-    void uploadDetails({String eventName,String details, String date, var image }){
+    void uploadDetails({String eventName,String details, String date, String image }){
       var id =Uuid();
       String pEventId = id.v1();
-  _firestore.collection('ref').doc(pEventId).set({
+  _firestore.collection(ref).doc(pEventId).set({
     'name' : eventName,
     'id' : pEventId,
     'details' : details,

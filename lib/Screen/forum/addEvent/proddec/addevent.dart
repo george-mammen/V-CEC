@@ -2,18 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+//import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:io';
 
-import 'package:path/path.dart';
-import 'package:proddeccec/backend/dbevent.dart';
+//import 'package:path/path.dart';
+import 'package:proddeccec/Screen/forum/addEvent/proddec/dbevent.dart';
 
 class ProfilePage extends StatefulWidget {
+
+  
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
+  
   TextEditingController eventNameController = TextEditingController();
   TextEditingController eventDetailsController = TextEditingController();
   TextEditingController eventDateController = TextEditingController();
@@ -39,12 +42,12 @@ class _ProfilePageState extends State<ProfilePage> {
             eventService.uploadDetails(
                 eventName: eventNameController.text,
                 details: eventDetailsController.text,
-                date: eventDetailsController.text,
+                date: eventDateController.text,
                 image: imageL);
             _formKey.currentState.reset();
             setState(() => isLoading = false);
             Fluttertoast.showToast(msg: 'Event added');
-            Navigator.pop(context);
+           // Navigator.pop(context);
           });
         } else {
           setState(() => isLoading = false);
@@ -62,19 +65,6 @@ class _ProfilePageState extends State<ProfilePage> {
       });
     }
 
-    // Future uploadPic(BuildContext context) async {
-    // String fileName = basename(_image.path);
-
-    //StorageReference firebaseStorageRef =
-    //  FirebaseStorage.instance.ref().child(fileName);
-    //StorageUploadTask uploadTask = firebaseStorageRef.putFile(_image);
-    //StorageTaskSnapshot taskSnapshot = await uploadTask.onComplete;
-    // setState(() {
-    // Scaffold.of(context)
-    //   .showSnackBar(SnackBar(content: Text('Profile Picture Uploaded')));
-    // });
-    // }
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Event Upload'),
@@ -84,45 +74,53 @@ class _ProfilePageState extends State<ProfilePage> {
         child: Container(
           child: isLoading
               ? Center(child: CircularProgressIndicator())
-              : Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
+              : ListView(
+                //  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    Align(
-                      alignment: Alignment.center,
-                      child: OutlineButton(
-                        child: Container(
-                          width: 170.0,
-                          height: 180.0,
-                          child: (_image != null)
-                              ? Image.file(
-                                  _image,
-                                  fit: BoxFit.fill,
-                                )
-                              : Icon(
-                                  Icons.add,
-                                  color: Colors.grey,
-                                ),
+                    Padding(
+                      padding:  EdgeInsets.only(top:MediaQuery.of(context).size.height *.02),
+                      child: Align(
+                        alignment: Alignment.center,
+                        child: OutlineButton(
+                          child: Container(
+                            width: MediaQuery.of(context).size.width * .5,
+                            height: MediaQuery.of(context).size.width * .6,
+                            child: (_image != null)
+                                ? Image.file(
+                                    _image,
+                                    fit: BoxFit.fill,
+                                  )
+                                : Icon(
+                                    Icons.add,
+                                    color: Colors.grey,
+                                  ),
+                          ),
+                          onPressed: () {
+                            getImage();
+                          },
                         ),
-                        onPressed: () {
-                          getImage();
-                        },
                       ),
                     ),
-                    TextFormField(
-                      controller: eventNameController,
-                      decoration: InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'Title',
-                        labelText: 'Title',
-                      ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter the Event name';
-                       }
-                     },
 
-                        // return null;
-                    
+
+                    Padding(
+                      padding: EdgeInsets.only(top:MediaQuery.of(context).size.width * .1),
+                      child: TextFormField(
+                        controller: eventNameController,
+                        decoration: InputDecoration(
+                          icon: Icon(Icons.person),
+                          hintText: 'Event name',
+                          labelText: 'Event name',
+                        ),
+                       validator: (value){
+                         if(value.isEmpty){
+                           return 'You must enter the Event name';
+                         }
+                       },
+
+                         
+                      
+                      ),
                     ),
                     TextFormField(
                       controller: eventDetailsController,
@@ -133,7 +131,10 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                      validator: (value){
                        if(value.isEmpty){
-                         return 'You must enter the Event name';
+                         return 'You must enter some words';
+                       }
+                       if(value.length > 25){
+                          return 'Should be less than 25 characters';
                        }
                      },
                     ),
@@ -146,16 +147,14 @@ class _ProfilePageState extends State<ProfilePage> {
                       ),
                      validator: (value){
                        if(value.isEmpty){
-                         return 'You must enter the Event name';
+                         return 'You must enter the date';
                        }
                      },
                     ),
                     SizedBox(
-                      height: 20.0,
+                      height:MediaQuery.of(context).size.width * .1,
                     ),
-                    SizedBox(
-                      height: 20.0,
-                    ),
+                   
                     RaisedButton(
                       color: Color(0xff476cfb),
                       onPressed: () {

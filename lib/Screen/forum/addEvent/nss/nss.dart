@@ -1,11 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:proddeccec/Screen/forum/addEvent/nss/addevent.dart';
 import 'package:proddeccec/Screen/forum/addEvent/nss/login.dart';
 import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-//import 'package:firebase_core/firebase_core.dart';
-//import 'package:firebase_auth/firebase_auth.dart';
+import 'package:url_launcher/url_launcher.dart';
+
 
 class Event2 extends StatefulWidget {
   @override
@@ -65,76 +64,80 @@ class _Event2State extends State<Event2> {
                   itemBuilder: (context, index) {
                     DocumentSnapshot myEvent = snapshot.data.docs[index];
 
+                     _launchURL1() async {
+                      final url = myEvent.data()['link1'];
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    }
+
+                    _launchURL2() async {
+                      final url = myEvent.data()['link2'];
+                      if (await canLaunch(url)) {
+                        await launch(url);
+                      } else {
+                        throw 'Could not launch $url';
+                      }
+                    }
+
                     return ListView(
                         shrinkWrap: true,
                         physics: NeverScrollableScrollPhysics(),
                         // scrollDirection: Axis.vertical,
                         children: <Widget>[
-                         
-
                           Container(
-                              margin: EdgeInsets.all(
-                                  SizeConfig.safeBlockHorizontal * 4),
-                             
-                                child: Card(
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(50.0),
-                                    ),
-                                    child: Material(
-                                      borderRadius: BorderRadius.circular(26.0),
-                                       
-                                        elevation: 14.0,
-                                       
-                                        shadowColor: Color(0x802196F3),
-                                        child: Row(
-                                          
-                                          children: <Widget>[
-                                          
-                                            Container(
-                                              width: SizeConfig
-                                                      .safeBlockHorizontal *
+                            margin: EdgeInsets.all(
+                                SizeConfig.safeBlockHorizontal * 4),
+                            child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(50.0),
+                                ),
+                                child: Material(
+                                    borderRadius: BorderRadius.circular(26.0),
+                                    elevation: 14.0,
+                                    shadowColor: Color(0x802196F3),
+                                    child: Row(
+                                      children: <Widget>[
+                                        Container(
+                                          width:
+                                              SizeConfig.safeBlockHorizontal *
                                                   35,
-                                              height: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  35,
-                                              child: ClipRRect(
-                                                borderRadius:
-                                                    new BorderRadius.circular(
-                                                        24.0),
-                                                child: Image.network(
-                                                  myEvent.data()['image'],
-                                                  fit: BoxFit.fill,
-                                                
-                                                ),
-                                              ),
+                                          height:
+                                              SizeConfig.safeBlockHorizontal *
+                                                  40.5,
+                                          child: ClipRRect(
+                                            borderRadius:
+                                                new BorderRadius.circular(24.0),
+                                            child: Image.network(
+                                              myEvent.data()['image'],
+                                              fit: BoxFit.cover,
                                             ),
-                                         
-
-                                            Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: SizeConfig
-                                                          .safeBlockHorizontal *
-                                                      4),
-                                              child: Column(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment
-                                                        .spaceEvenly,
-                                                children: <Widget>[
-                                                  Padding(
-                                                    padding: EdgeInsets.only(
-                                                      left:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              .02,
-                                                      top:
-                                                          MediaQuery.of(context)
-                                                                  .size
-                                                                  .height *
-                                                              .02,
-                                                    ),
-                                                    child: Container(
-                                                        child: Column(
+                                          ),
+                                        ),
+                                        Padding(
+                                          padding: EdgeInsets.only(
+                                              left: SizeConfig
+                                                      .safeBlockHorizontal *
+                                                  2),
+                                          child: Column(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            children: <Widget>[
+                                              Padding(
+                                                padding: EdgeInsets.only(
+                                                  left: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      .005,
+                                                  top: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      .02,
+                                                ),
+                                                child: Container(
+                                                  child: Column(
                                                       mainAxisAlignment:
                                                           MainAxisAlignment
                                                               .spaceEvenly,
@@ -181,7 +184,6 @@ class _Event2State extends State<Event2> {
                                                                 .015,
                                                           ),
                                                         )),
-                                                      
                                                         SizedBox(
                                                           height: MediaQuery.of(
                                                                       context)
@@ -189,11 +191,7 @@ class _Event2State extends State<Event2> {
                                                                   .height *
                                                               .02,
                                                         ),
-                                                        Padding(
-                                                          padding:
-                                                              EdgeInsets.only(
-                                                                  left: 8.0),
-                                                          child: Container(
+                                                        Container(
                                                               child: Text(
                                                             myEvent
                                                                 .data()['date'],
@@ -204,27 +202,73 @@ class _Event2State extends State<Event2> {
                                                                   FontWeight
                                                                       .w700,
                                                               color:
-                                                                  Colors.blue,
+                                                                  Colors.blueGrey,
                                                               fontSize: MediaQuery.of(
                                                                           context)
                                                                       .size
                                                                       .height *
-                                                                  .027,
+                                                                  .021,
                                                             ),
                                                           )),
-                                                        ),
-                                                      ],
-                                                    )),
-                                                  ),
-                                                ],
+                                                        
+                                                        Row(
+                                                          mainAxisAlignment:
+                                                              MainAxisAlignment
+                                                                 .spaceAround,
+                                                          children: <Widget>[
+                                                            FlatButton(
+                                                                onPressed:
+                                                                    _launchURL1,
+                                                                child: Text(
+                                                                  myEvent.data()[
+                                                                      'button1'],
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontFamily:
+                                                                        'Ubuntu',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700,
+                                                                    color: Colors
+                                                                        .blue,
+                                                                    fontSize: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        .016,
+                                                                  ),
+                                                                )),
+                                                            FlatButton(
+                                                                onPressed:
+                                                                    _launchURL2,
+                                                                child: Text(
+                                                                  myEvent.data()[
+                                                                      'button2'],
+                                                                  style:
+                                                                      TextStyle(
+                                                                    fontFamily:
+                                                                        'Ubuntu',
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w700,
+                                                                    color: Colors
+                                                                        .blue,
+                                                                    fontSize: MediaQuery.of(context)
+                                                                            .size
+                                                                            .height *
+                                                                        .016,
+                                                                  ),
+                                                                )),
+                                                          ],
+                                                        )
+                                                      ]),
+                                                ),
                                               ),
-                                            ),
-
-                                          ],
-                                        ))),
-                              )
-
-                        
+                                            ],
+                                          ),
+                                        ),
+                                      ],
+                                    ))),
+                          )
                         ]);
                   });
             }

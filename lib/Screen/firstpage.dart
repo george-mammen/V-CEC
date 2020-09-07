@@ -6,7 +6,12 @@ import 'package:proddeccec/backend/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 
+final FirebaseFirestore _db = FirebaseFirestore.instance;
+final FirebaseMessaging _fcm = FirebaseMessaging();
+
+//FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
 class FirstPage extends StatefulWidget {
   @override
@@ -14,12 +19,29 @@ class FirstPage extends StatefulWidget {
 }
 
 class _FirstPageState extends State<FirstPage> {
+  _saveDeviceToken() async {
+    // Get the token for this device
+    String fcmToken = await _fcm.getToken();
+
+    // Save it to Firestore
+    if (fcmToken != null) {
+      var tokens = _db.collection('users').doc(fcmToken);
+
+      await tokens.set({
+        'token': fcmToken,
+        //'createdAt': FieldValue.serverTimestamp(), // optional
+        //   'platform': Platform.operatingSystem // optional
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
     return Scaffold(
         body: StreamBuilder(
-            stream: FirebaseFirestore.instance.collection('Firstpage').snapshots(),
+            stream:
+                FirebaseFirestore.instance.collection('Firstpage').snapshots(),
             builder:
                 (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
               if (!snapshot.hasData) {
@@ -43,11 +65,20 @@ class _FirstPageState extends State<FirstPage> {
                         }
                       }
 
+                      _launchURL3() async {
+                        final url = first.data()['link3'];
+                        if (await canLaunch(url)) {
+                          await launch(url);
+                        }
+                      }
+
                       return Container(
                         width: MediaQuery.of(context).size.width,
                         height: MediaQuery.of(context).size.height,
                         color: Colors.white,
                         child: ListView(
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
                           children: <Widget>[
                             GestureDetector(
                               onTap: _launchURL1,
@@ -78,36 +109,54 @@ class _FirstPageState extends State<FirstPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                     FlatButton(
-                                          highlightColor: Colors.blue[300],
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              side: BorderSide(
-                                                  color: Colors.black,
-                                                  width: 1.0)),
-                                          splashColor: Colors.black,
-                                          onPressed: () {
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Notify()),
-                                            );
-                                          },
-                                          child: Text(
-                                            "   Notice   ",
-                                            style: TextStyle(
-                                              fontFamily: 'Ubuntu',
-                                              fontWeight: FontWeight.w400,
-                                              // color: Colors.black,
-                                              fontSize: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  6,
-                                              //  fontFamily: 'Arvo',
-                                            ),
-                                          )),
-                                    
+                                    FlatButton(
+                                        highlightColor: Colors.blue[300],
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            side: BorderSide(
+                                                color: Colors.black,
+                                                width: 1.0)),
+                                        splashColor: Colors.black,
+                                        onPressed: () {
+                                          _saveDeviceToken();
+
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => Notify()),
+                                          );
+                                        },
+                                        child: Text(
+                                          "   Notice   ",
+                                          style: TextStyle(
+                                            fontFamily: 'Ubuntu',
+                                            fontWeight: FontWeight.w400,
+                                            // color: Colors.black,
+                                            fontSize:
+                                                SizeConfig.safeBlockHorizontal *
+                                                    6,
+                                            //  fontFamily: 'Arvo',
+                                          ),
+                                        )),
+                                    GestureDetector(
+                                      onTap: _launchURL3,
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                .1,
+                                        height:
+                                            MediaQuery.of(context).size.height *
+                                                .05,
+                                        // borderRadius: new BorderRadius.circular(24.0),
+                                        child: Image(
+                                          image: AssetImage(
+                                              "images/Moodle-icon.png"),
+                                          fit: BoxFit.fill,
+                                          // alignment: Alignment.topRight,
+                                        ),
+                                      ),
+                                    ),
                                     FlatButton(
                                         highlightColor: Colors.amberAccent,
                                         shape: RoundedRectangleBorder(

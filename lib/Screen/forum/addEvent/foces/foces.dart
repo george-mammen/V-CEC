@@ -1,18 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:proddeccec/Screen/forum/addEvent/ncc/login.dart';
+//import 'package:proddeccec/Screen/forum/addEvent/foces/addevent.dart';
+import 'package:proddeccec/Screen/forum/addEvent/foces/login.dart';
 import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Event3 extends StatefulWidget {
+class Event6 extends StatefulWidget {
   @override
-  _Event3State createState() => _Event3State();
+  _Event6State createState() => _Event6State();
 }
 
-class _Event3State extends State<Event3> {
-  bool isLoading = false;
-
+class _Event6State extends State<Event6> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -31,15 +30,12 @@ class _Event3State extends State<Event3> {
         actions: [
           IconButton(
             icon: Icon(Icons.add),
-            onPressed:(){
+            onPressed: () {
               Navigator.push(
-                         context,
-                     MaterialPageRoute(
-                          builder: (context) =>
-                             LoginPage()
-                    ),
-                    );
-            } ,
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
+            },
           )
         ],
         backgroundColor: Colors.white,
@@ -47,10 +43,8 @@ class _Event3State extends State<Event3> {
           color: Colors.black, //change your color here
         ),
       ),
-      body: isLoading
-              ? Center(child: CircularProgressIndicator())
-              : StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('eNcc').snapshots(),
+      body: StreamBuilder(
+          stream: FirebaseFirestore.instance.collection('eFoces').snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
@@ -63,7 +57,7 @@ class _Event3State extends State<Event3> {
                   itemBuilder: (context, index) {
                     DocumentSnapshot myEvent = snapshot.data.docs[index];
 
-                     _launchURL1() async {
+                    _launchURL1() async {
                       final url = myEvent.data()['link1'];
                       if (await canLaunch(url)) {
                         await launch(url);
@@ -275,4 +269,3 @@ class _Event3State extends State<Event3> {
     );
   }
 }
-

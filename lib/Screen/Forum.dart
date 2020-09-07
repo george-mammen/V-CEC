@@ -3,6 +3,8 @@ import 'package:proddeccec/Screen/forum/addEvent/iedc/iedc.dart';
 import 'package:proddeccec/Screen/forum/addEvent/ieee/ieee.dart';
 import 'package:proddeccec/Screen/forum/addEvent/ncc/ncc.dart';
 import 'package:proddeccec/Screen/forum/addEvent/nss/nss.dart';
+import 'package:proddeccec/Screen/forum/addEvent/foces/foces.dart';
+
 //import 'package:proddeccec/Screen/forum/addEvent/proddec/addevent.dart';
 import 'package:proddeccec/backend/size_config.dart';
 import 'package:proddeccec/Screen/forum/addEvent/proddec/proddec.dart';
@@ -89,7 +91,7 @@ class _ForumState extends State<Forum> {
                           Padding(
                              padding:  EdgeInsets.only(left:MediaQuery.of(context).size. width*.09),
                             child: Text(
-                              "P.R.O.D.E.C.C",
+                              "P.R.O.D.D.E.C",
                               style: TextStyle(
                                 fontFamily: 'Lekton',
                                 fontWeight: FontWeight.w700,
@@ -271,7 +273,63 @@ class _ForumState extends State<Forum> {
                             ),
                           ),
                         ]))),
+ Container(
+                margin: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
 
+                // child: Padding(
+                //    padding: EdgeInsets.only(
+                //      bottom: SizeConfig.safeBlockVertical * 5),
+                child: FlatButton(
+                    highlightColor: Colors.blue[300],
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(20),
+                        side: BorderSide(
+                          color: Colors.transparent,
+                          //width: 1.0
+                        )),
+                    splashColor: Colors.black,
+                    onPressed: () {
+                       Navigator.push(
+                           context,
+                       MaterialPageRoute(
+                            builder: (context) =>
+                               Event6()
+                      ),
+                      );
+                   },
+                    child: Row(
+                        //  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: MediaQuery.of(context).size.width * .04),
+                            child: Container(
+                              // padding: EdgeInsets.only(left: 8.0),
+                              width: MediaQuery.of(context).size.width * .2,
+                              height: MediaQuery.of(context).size.height * .09,
+                              // borderRadius: new BorderRadius.circular(24.0),
+                              child: Image(
+                                image: AssetImage("images/foces.png"),
+                                fit: BoxFit.fill,
+                                // alignment: Alignment.topRight,
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.only(
+                                left: MediaQuery.of(context).size.width * .09),
+                            child: Text(
+                              "FOCES",
+                              style: TextStyle(
+                                fontFamily: 'Lekton',
+                                fontWeight: FontWeight.w700,
+                                // color: Colors.black,
+                                fontSize: SizeConfig.safeBlockHorizontal * 6,
+                                //  fontFamily: 'Arvo',
+                              ),
+                            ),
+                          ),
+                        ]))),
                         Container(
                 margin: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
 

@@ -5,12 +5,18 @@ import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+
+
+
 class Notify extends StatefulWidget {
+  
   @override
   _NotifyState createState() => _NotifyState();
 }
 
 class _NotifyState extends State<Notify> {
+
+  
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -26,9 +32,12 @@ class _NotifyState extends State<Notify> {
         ),
         centerTitle: true,
          actions: [
+           
+           
           IconButton(
+            
             icon: Icon(Icons.add),
-            onPressed:(){
+            onPressed:(){ 
               Navigator.push(
                          context,
                      MaterialPageRoute(

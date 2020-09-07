@@ -157,11 +157,11 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintText: 'Link 1',
                         labelText: 'Link 1',
                       ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter the date';
-                       }
-                     },
+                    // validator: (value){
+                    //   if(value.isEmpty){
+                      //   return 'You must enter the date';
+                      // }
+                    // },
                     ),
                     TextFormField(
                       controller: eventLink2Controller,
@@ -170,14 +170,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintText: 'Link 2',
                         labelText: 'Link 2',
                       ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter some words';
-                       }
-                       if(value.length > 25){
-                          return 'Should be less than 25 characters';
-                       }
-                     },
+                     //validator: (value){
+                     //  if(value.isEmpty){
+                       //  return 'You must enter some words';
+                      // }
+                      // if(value.length > 25){
+                       //   return 'Should be less than 25 characters';
+                      // }
+                     //},
                     ),
                     TextFormField(
                       controller: eventLink3Controller,
@@ -186,14 +186,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintText: 'Link 3',
                         labelText: 'Link 3',
                       ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter some words';
-                       }
-                       if(value.length > 35){
-                          return 'Should be less than 35 characters';
-                       }
-                     },
+                    // validator: (value){
+                      // if(value.isEmpty){
+                        // return 'You must enter some words';
+                      // }
+                      // if(value.length > 35){
+                      //    return 'Should be less than 35 characters';
+                      // }
+                    // },
                     ),
                     TextFormField(
                       controller: eventButton1Controller,
@@ -202,14 +202,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintText: 'Button 1',
                         labelText: 'Button 1',
                       ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter some words';
-                       }
-                       if(value.length > 25){
-                          return 'Should be less than 25 characters';
-                       }
-                     },
+                    // validator: (value){
+                      // if(value.isEmpty){
+                        // return 'You must enter some words';
+                      // }
+                      // if(value.length > 25){
+                        //  return 'Should be less than 25 characters';
+                      // }
+                    // },
                     ),
                     TextFormField(
                       controller: eventButton2Controller,
@@ -218,14 +218,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintText: 'Button 2',
                         labelText: 'Button 2',
                       ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter some words';
-                       }
-                       if(value.length > 25){
-                          return 'Should be less than 25 characters';
-                       }
-                     },
+                    // validator: (value){
+                      // if(value.isEmpty){
+                        // return 'You must enter some words';
+                     //  }
+                       //if(value.length > 25){
+                         // return 'Should be less than 25 characters';
+                     //  }
+                    // },
                     ),
                     TextFormField(
                       controller: eventButton3Controller,
@@ -234,14 +234,14 @@ class _ProfilePageState extends State<ProfilePage> {
                         hintText: 'Button 3',
                         labelText: 'Button 3',
                       ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter some words';
-                       }
-                       if(value.length > 25){
-                          return 'Should be less than 25 characters';
-                       }
-                     },
+                    // validator: (value){
+                     //  if(value.isEmpty){
+                       //  return 'You must enter some words';
+                      // }
+                      // if(value.length > 25){
+                        //  return 'Should be less than 25 characters';
+                      // }
+                     //},
                     ),
                     SizedBox(
                       height:MediaQuery.of(context).size.width * .1,

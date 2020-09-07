@@ -20,6 +20,10 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController eventNameController = TextEditingController();
   TextEditingController eventDetailsController = TextEditingController();
   TextEditingController eventDateController = TextEditingController();
+  TextEditingController eventButton1Controller = TextEditingController();
+  TextEditingController eventButton2Controller = TextEditingController();
+  TextEditingController eventLink1Controller = TextEditingController();
+  TextEditingController eventLink2Controller = TextEditingController();
 
   File _image;
   bool isLoading = false;
@@ -43,6 +47,10 @@ class _ProfilePageState extends State<ProfilePage> {
                 eventName: eventNameController.text,
                 details: eventDetailsController.text,
                 date: eventDateController.text,
+                button1: eventButton1Controller.text,
+                button2: eventButton2Controller.text,
+                link1: eventLink1Controller.text,
+                link2: eventLink2Controller.text,
                 image: imageL);
             _formKey.currentState.reset();
             setState(() => isLoading = false);
@@ -133,8 +141,8 @@ class _ProfilePageState extends State<ProfilePage> {
                        if(value.isEmpty){
                          return 'You must enter some words';
                        }
-                       if(value.length > 25){
-                          return 'Should be less than 25 characters';
+                       if(value.length > 30){
+                          return 'Should be less than 30 characters';
                        }
                      },
                     ),
@@ -150,6 +158,54 @@ class _ProfilePageState extends State<ProfilePage> {
                          return 'You must enter the date';
                        }
                      },
+                    ),
+                    TextFormField(
+                      controller: eventButton1Controller,
+                      decoration:  InputDecoration(
+                        icon: Icon(Icons.person),
+                        labelText: 'Link Name',
+                        hintText: 'eg: Register',
+                      ),
+                     validator: (value){
+                      
+                       if(value.length > 10){
+                          return 'Should be less than 10 characters';
+                       }
+                     },
+                    ),
+
+                    TextFormField(
+                      controller: eventLink1Controller,
+                      decoration:  InputDecoration(
+                        icon: Icon(Icons.person),
+                        labelText: 'Link',
+                        hintText: 'eg: https://www.google.com',
+                      ),
+                  
+                    ),
+                    TextFormField(
+                      controller: eventButton2Controller,
+                      decoration:  InputDecoration(
+                        icon: Icon(Icons.person),
+                        labelText: 'Link Name',
+                        hintText: 'eg: Payment',
+                      ),
+                             validator: (value){
+                      
+                       if(value.length > 10){
+                          return 'Should be less than 10 characters';
+                       }
+                     },         
+                    ),
+
+                     TextFormField(
+                      controller: eventLink2Controller,
+                      decoration:  InputDecoration(
+                        icon: Icon(Icons.person),
+                        labelText: 'Link',
+                        hintText: 'eg: https://www.google.com',
+                      ),
+                  
                     ),
                     SizedBox(
                       height:MediaQuery.of(context).size.width * .1,

@@ -4,7 +4,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 
-import 'package:proddeccec/Screen/forum/addEvent/iedc/dbevent.dart';
+import 'package:proddeccec/Screen/forum/addEvent/foces/dbevent.dart';
 
 class ProfilePage extends StatefulWidget {
 
@@ -49,7 +49,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 button2: eventButton2Controller.text,
                 link1: eventLink1Controller.text,
                 link2: eventLink2Controller.text,
-                image: imageL);
+                image: imageL
+                );
             _formKey.currentState.reset();
             setState(() => isLoading = false);
             Fluttertoast.showToast(msg: 'Event added');

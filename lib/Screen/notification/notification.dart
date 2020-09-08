@@ -155,7 +155,7 @@ class _NotifyState extends State<Notify> {
                                           fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.w700,
                                           color: Colors.blue,
-                                          fontSize: MediaQuery.of(context).size.height *.025,
+                                          fontSize: MediaQuery.of(context).size.height *.024,
                                         ),
                                       )),
                                   FlatButton(
@@ -166,7 +166,7 @@ class _NotifyState extends State<Notify> {
                                           fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.w700,
                                           color: Colors.blue,
-                                          fontSize: MediaQuery.of(context).size.height *.025,
+                                          fontSize: MediaQuery.of(context).size.height *.024,
                                         ),
                                       )),
                                       FlatButton(
@@ -177,7 +177,7 @@ class _NotifyState extends State<Notify> {
                                           fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.w700,
                                           color: Colors.blue,
-                                          fontSize: MediaQuery.of(context).size.height *.025,
+                                          fontSize: MediaQuery.of(context).size.height *.024,
                                         ),
                                       )),
                                 ])

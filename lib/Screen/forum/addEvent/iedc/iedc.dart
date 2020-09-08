@@ -109,7 +109,7 @@ class _Event5State extends State<Event5> {
                                             ),
                                           ),
                                         ),
-                                        Padding(
+                                       Padding(
                                           padding: EdgeInsets.only(
                                               left: SizeConfig
                                                       .safeBlockHorizontal *
@@ -129,132 +129,138 @@ class _Event5State extends State<Event5> {
                                                           .height *
                                                       .02,
                                                 ),
-                                                child: Container(
-                                                  child: Column(
-                                                      mainAxisAlignment:
-                                                          MainAxisAlignment
-                                                              .spaceEvenly,
-                                                      children: <Widget>[
-                                                        Container(
+                                                child: Column(
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment
+                                                            .spaceEvenly,
+                                                    children: <Widget>[
+                                                      Container(
+                                                          child: Text(
+                                                        myEvent
+                                                            .data()['name'],
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              'Ubuntu',
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color: Colors.black,
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              .03,
+                                                        ),
+                                                      )),
+                                                      
+                                                      Padding(
+                                                        padding: EdgeInsets.only(
+                                                  bottom: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      .005,
+                                                  top: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      .02,
+                                                ),
+                                                          child: Text(
+                                                        myEvent.data()[
+                                                            'details'],
+                                                        style: TextStyle(
+                                                          fontFamily:
+                                                              'Lekton',
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color:
+                                                              Colors.black54,
+                                                          fontSize: MediaQuery.of(
+                                                                      context)
+                                                                  .size
+                                                                  .height *
+                                                              .012,
+                                                        ),
+                                                      )),
+                                                     
+                                                      Padding(
+                                                        padding: EdgeInsets.only(
+                                                  bottom: MediaQuery.of(context)
+                                                          .size
+                                                          .width *
+                                                      .005,
+                                                  top: MediaQuery.of(context)
+                                                          .size
+                                                          .height *
+                                                      .01,
+                                                ),
                                                             child: Text(
                                                           myEvent
-                                                              .data()['name'],
+                                                              .data()['date'],
                                                           style: TextStyle(
                                                             fontFamily:
                                                                 'Ubuntu',
                                                             fontWeight:
-                                                                FontWeight.w700,
-                                                            color: Colors.black,
-                                                            fontSize: MediaQuery.of(
-                                                                        context)
-                                                                    .size
-                                                                    .height *
-                                                                .03,
-                                                          ),
-                                                        )),
-                                                        SizedBox(
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              .02,
-                                                        ),
-                                                        Container(
-                                                            child: Text(
-                                                          myEvent.data()[
-                                                              'details'],
-                                                          style: TextStyle(
-                                                            fontFamily:
-                                                                'Lekton',
-                                                            fontWeight:
-                                                                FontWeight.w700,
+                                                                FontWeight
+                                                                    .w700,
                                                             color:
-                                                                Colors.black54,
+                                                                Colors.blueGrey,
                                                             fontSize: MediaQuery.of(
                                                                         context)
                                                                     .size
                                                                     .height *
-                                                                .015,
+                                                                .021,
                                                           ),
                                                         )),
-                                                        SizedBox(
-                                                          height: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              .02,
-                                                        ),
-                                                        Container(
+                                                      
+                                                      Row(
+                                                        mainAxisAlignment:
+                                                            MainAxisAlignment
+                                                               .spaceAround,
+                                                        children: <Widget>[
+                                                          FlatButton(
+                                                              onPressed:
+                                                                  _launchURL1,
                                                               child: Text(
-                                                            myEvent
-                                                                .data()['date'],
-                                                            style: TextStyle(
-                                                              fontFamily:
-                                                                  'Ubuntu',
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .w700,
-                                                              color:
-                                                                  Colors.blueGrey,
-                                                              fontSize: MediaQuery.of(
-                                                                          context)
-                                                                      .size
-                                                                      .height *
-                                                                  .021,
-                                                            ),
-                                                          )),
-                                                        
-                                                        Row(
-                                                          mainAxisAlignment:
-                                                              MainAxisAlignment
-                                                                 .spaceAround,
-                                                          children: <Widget>[
-                                                            FlatButton(
-                                                                onPressed:
-                                                                    _launchURL1,
-                                                                child: Text(
-                                                                  myEvent.data()[
-                                                                      'button1'],
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontFamily:
-                                                                        'Ubuntu',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700,
-                                                                    color: Colors
-                                                                        .blue,
-                                                                    fontSize: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        .016,
-                                                                  ),
-                                                                )),
-                                                            FlatButton(
-                                                                onPressed:
-                                                                    _launchURL2,
-                                                                child: Text(
-                                                                  myEvent.data()[
-                                                                      'button2'],
-                                                                  style:
-                                                                      TextStyle(
-                                                                    fontFamily:
-                                                                        'Ubuntu',
-                                                                    fontWeight:
-                                                                        FontWeight
-                                                                            .w700,
-                                                                    color: Colors
-                                                                        .blue,
-                                                                    fontSize: MediaQuery.of(context)
-                                                                            .size
-                                                                            .height *
-                                                                        .016,
-                                                                  ),
-                                                                )),
-                                                          ],
-                                                        )
-                                                      ]),
-                                                ),
+                                                                myEvent.data()[
+                                                                    'button1'],
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      'Ubuntu',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Colors
+                                                                      .blue,
+                                                                  fontSize: MediaQuery.of(context)
+                                                                          .size
+                                                                          .height *
+                                                                      .016,
+                                                                ),
+                                                              )),
+                                                          FlatButton(
+                                                              onPressed:
+                                                                  _launchURL2,
+                                                              child: Text(
+                                                                myEvent.data()[
+                                                                    'button2'],
+                                                                style:
+                                                                    TextStyle(
+                                                                  fontFamily:
+                                                                      'Ubuntu',
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .w700,
+                                                                  color: Colors
+                                                                      .blue,
+                                                                  fontSize: MediaQuery.of(context)
+                                                                          .size
+                                                                          .height *
+                                                                      .016,
+                                                                ),
+                                                              )),
+                                                        ],
+                                                      )
+                                                    ]),
                                               ),
                                             ],
                                           ),

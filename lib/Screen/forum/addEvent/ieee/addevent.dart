@@ -52,7 +52,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 image: imageL);
             _formKey.currentState.reset();
             setState(() => isLoading = false);
-            Fluttertoast.showToast(msg: 'Event added');
+             Fluttertoast.showToast(msg: 'Event added',toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.blue[300],textColor: Colors.white,fontSize: 16.0);
            // Navigator.pop(context);
           });
         } else {
@@ -139,8 +140,8 @@ class _ProfilePageState extends State<ProfilePage> {
                        if(value.isEmpty){
                          return 'You must enter some words';
                        }
-                       if(value.length > 30){
-                          return 'Should be less than 30 characters';
+                       if(value.length > 40){
+                          return 'Should be less than 40 characters';
                        }
                      },
                     ),

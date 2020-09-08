@@ -58,12 +58,13 @@ class _ProfilePageState extends State<ProfilePage> {
                 image: imageL);
             _formKey.currentState.reset();
             setState(() => isLoading = false);
-            Fluttertoast.showToast(msg: 'Notification added');
+             Fluttertoast.showToast(msg: 'Notification added',toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.CENTER,
+            backgroundColor: Colors.blue[300],textColor: Colors.white,fontSize: 16.0);
            // Navigator.pop(context);
           });
         } else {
           setState(() => isLoading = false);
-          Fluttertoast.showToast(msg: 'image must be provided');
+          Fluttertoast.showToast(msg: 'image must be provided',textColor: Colors.black);
         }
       }
     }
@@ -79,7 +80,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Event Upload'),
+        title: Text('Notice Upload'),
       ),
       body: Form(
         key: _formKey,
@@ -145,104 +146,70 @@ class _ProfilePageState extends State<ProfilePage> {
                        if(value.isEmpty){
                          return 'You must enter some words';
                        }
-                       if(value.length > 25){
-                          return 'Should be less than 25 characters';
+                       if(value.length > 50){
+                          return 'Should be less than 50 characters';
                        }
                      },
+                    ),
+
+                    TextFormField(
+                      controller: eventButton1Controller,
+                      decoration:  InputDecoration(
+                        icon: Icon(Icons.person),
+                        hintText: 'Notice',
+                        labelText: 'Button 1',
+                      ),
+                    
                     ),
                     TextFormField(
                       controller: eventLink1Controller,
                       decoration:  InputDecoration(
                         icon: Icon(Icons.person),
-                        hintText: 'Link 1',
                         labelText: 'Link 1',
+                        hintText: 'example.pdf',
                       ),
-                    // validator: (value){
-                    //   if(value.isEmpty){
-                      //   return 'You must enter the date';
-                      // }
-                    // },
+                 
+                    ),
+                     TextFormField(
+                      controller: eventButton2Controller,
+                      decoration:  InputDecoration(
+                        icon: Icon(Icons.person),
+                        hintText: 'Register',
+                        labelText: 'Button 2',
+                      ),
+                    
                     ),
                     TextFormField(
                       controller: eventLink2Controller,
                       decoration:  InputDecoration(
                         icon: Icon(Icons.person),
-                        hintText: 'Link 2',
                         labelText: 'Link 2',
+                        hintText: 'https://www.ceconline.edu',
                       ),
-                     //validator: (value){
-                     //  if(value.isEmpty){
-                       //  return 'You must enter some words';
-                      // }
-                      // if(value.length > 25){
-                       //   return 'Should be less than 25 characters';
-                      // }
-                     //},
+                     
+                    ),
+
+                     TextFormField(
+                      controller: eventButton3Controller,
+                      decoration:  InputDecoration(
+                        icon: Icon(Icons.person),
+                        hintText: 'Feepay',
+                        labelText: 'Button 3',
+                      ),
+                    
                     ),
                     TextFormField(
                       controller: eventLink3Controller,
                       decoration:  InputDecoration(
                         icon: Icon(Icons.person),
-                        hintText: 'Link 3',
+                        hintText: 'https://www.onlinesbi.com/',
                         labelText: 'Link 3',
                       ),
-                    // validator: (value){
-                      // if(value.isEmpty){
-                        // return 'You must enter some words';
-                      // }
-                      // if(value.length > 35){
-                      //    return 'Should be less than 35 characters';
-                      // }
-                    // },
+                    
                     ),
-                    TextFormField(
-                      controller: eventButton1Controller,
-                      decoration:  InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'Button 1',
-                        labelText: 'Button 1',
-                      ),
-                    // validator: (value){
-                      // if(value.isEmpty){
-                        // return 'You must enter some words';
-                      // }
-                      // if(value.length > 25){
-                        //  return 'Should be less than 25 characters';
-                      // }
-                    // },
-                    ),
-                    TextFormField(
-                      controller: eventButton2Controller,
-                      decoration:  InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'Button 2',
-                        labelText: 'Button 2',
-                      ),
-                    // validator: (value){
-                      // if(value.isEmpty){
-                        // return 'You must enter some words';
-                     //  }
-                       //if(value.length > 25){
-                         // return 'Should be less than 25 characters';
-                     //  }
-                    // },
-                    ),
-                    TextFormField(
-                      controller: eventButton3Controller,
-                      decoration:  InputDecoration(
-                        icon: Icon(Icons.person),
-                        hintText: 'Button 3',
-                        labelText: 'Button 3',
-                      ),
-                    // validator: (value){
-                     //  if(value.isEmpty){
-                       //  return 'You must enter some words';
-                      // }
-                      // if(value.length > 25){
-                        //  return 'Should be less than 25 characters';
-                      // }
-                     //},
-                    ),
+                    
+                   
+                   
                     SizedBox(
                       height:MediaQuery.of(context).size.width * .1,
                     ),

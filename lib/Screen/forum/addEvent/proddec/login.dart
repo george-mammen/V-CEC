@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:proddeccec/Screen/forum/addEvent/proddec/addevent.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
@@ -119,7 +120,16 @@ class _State extends State<LoginPage> {
                                                             ProfilePage()),
                                                   );
                                                 } else {
-                                                  return "Invalid id";
+                                                 return Fluttertoast.showToast(
+                                                    msg: 'Invalid',
+                                                    toastLength:
+                                                        Toast.LENGTH_LONG,
+                                                    gravity:
+                                                        ToastGravity.BOTTOM,
+                                                    backgroundColor:
+                                                        Colors.red[400],
+                                                    textColor: Colors.white,
+                                                    fontSize: 16.0);
                                                 }
                                               },
                                               shape: RoundedRectangleBorder(

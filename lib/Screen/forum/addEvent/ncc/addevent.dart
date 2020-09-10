@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -67,7 +68,10 @@ class _ProfilePageState extends State<ProfilePage> {
 
     Future getImage() async {
       var image = await ImagePicker.pickImage(source: ImageSource.gallery);
-
+ File result = await FlutterNativeImage.compressImage(image.path,
+    quality: 10);
+print(image.lengthSync());
+print(result.lengthSync());
       setState(() {
         _image = image;
         print('Image Path $_image');

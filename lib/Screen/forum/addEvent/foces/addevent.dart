@@ -3,6 +3,8 @@ import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
+import 'package:flutter_native_image/flutter_native_image.dart';
+
 
 import 'package:proddeccec/Screen/forum/addEvent/foces/dbevent.dart';
 
@@ -27,6 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
   bool isLoading = false;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   EventService eventService = EventService();
+  
   @override
   Widget build(BuildContext context) {
     void validateAndUpload() {
@@ -65,11 +68,18 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     Future getImage() async {
+      
       var image = await ImagePicker.pickImage(source: ImageSource.gallery);
 
+      File result = await FlutterNativeImage.compressImage(image.path,
+    quality: 10);
+print(image.lengthSync());
+print(result.lengthSync());
+
       setState(() {
-        _image = image;
+        _image = result;
         print('Image Path $_image');
+
       });
     }
 
@@ -83,7 +93,6 @@ class _ProfilePageState extends State<ProfilePage> {
           child: isLoading
               ? Center(child: CircularProgressIndicator())
               : ListView(
-                //  mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
                     Padding(
                       padding:  EdgeInsets.only(top:MediaQuery.of(context).size.height *.02),

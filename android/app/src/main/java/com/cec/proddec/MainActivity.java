@@ -1,4 +1,4 @@
-package com.example.proddeccec;
+package com.cec.proddec;
 
 import io.flutter.embedding.android.FlutterActivity;
 

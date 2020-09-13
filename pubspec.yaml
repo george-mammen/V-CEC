@@ -39,6 +39,8 @@ dependencies:
   uuid: ^2.2.0
   fluttertoast: ^7.0.2
   flutter_native_image: ^0.0.5
+  change_app_package_name: ^0.1.2
+
 
  # firebase_auth: ^0.6.6
   #firebase_database:

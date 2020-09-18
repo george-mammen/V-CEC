@@ -388,56 +388,7 @@ class _ForumState extends State<Forum> {
                           ),
                         ]))),
 
-                //        Container(
-               // margin: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
-
-                
-               // child: FlatButton(
-                 //   highlightColor: Colors.blue[300],
-                   // shape: RoundedRectangleBorder(
-                     //   borderRadius: BorderRadius.circular(20),
-                       // side: BorderSide(
-                         // color: Colors.transparent,
-                       // )),
-                   // splashColor: Colors.black,
-                   // onPressed: () {
-                      // Navigator.push(
-                      //     context,
-                      // MaterialPageRoute(
-                      //      builder: (context) =>
-                      //         Notify()
-                      //),
-                      //);
-                  //  },
-                    //child: Row(
-                      // children: [
-                        //  Padding(
-                          //  padding: EdgeInsets.only(
-                             //   left: MediaQuery.of(context).size.width * .04),
-                           // child: Container(
-//                              width: MediaQuery.of(context).size.width * .2,
-  //                            height: MediaQuery.of(context).size.height * .09,
-                            //  child: Image(
-                              //  image: AssetImage("images/cec1.jpg"),
-                               // fit: BoxFit.fill,
-                             // ),
-                            //),
-                          //),
-                     //     Padding(
-                       //     padding: EdgeInsets.only(
-                         //       left: MediaQuery.of(context).size.width * .09),
-                          //  child: Text(
-                            //  "Placement Cell",
-                            //  style: TextStyle(
-                              //  fontFamily: 'Lekton',
-                                //fontWeight: FontWeight.w700,
-                                // color: Colors.black,
-                               // fontSize: SizeConfig.safeBlockHorizontal * 5,
-                                //  fontFamily: 'Arvo',
-                           //   ),
-                           // ),
-                         // ),
-                       // ]))),
+              
           ],
         ),
       ),

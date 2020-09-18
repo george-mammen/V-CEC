@@ -1,5 +1,3 @@
-// Created By Arjun Vishnu Varma(2018-2022 CS Batch) //
-
 //import 'package:device_preview/device_preview.dart';
 import 'package:flutter/material.dart';
 //import 'package:proddeccec/Screen/addevent.dart';
@@ -43,4 +41,4 @@ class MyApp extends StatelessWidget {
 }
 
 
-// Created By Arjun Vishnu Varma(2018-2022 CS Batch) //
+// Created By Arjun Vishnu Varma //

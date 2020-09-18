@@ -103,8 +103,8 @@ class _NotifyState extends State<Notify> {
                     return Container(
                       margin: EdgeInsets.all(10.0),
                       child: Card(
-                        shadowColor: Colors.blueAccent,
-                        elevation: 10.0,
+                        shadowColor: Colors.grey,
+                        elevation: 4.0,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(MediaQuery.of(context).size.height * 0.02),
                         ),

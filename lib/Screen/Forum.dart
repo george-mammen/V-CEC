@@ -91,7 +91,7 @@ class _ForumState extends State<Forum> {
                           Padding(
                              padding:  EdgeInsets.only(left:MediaQuery.of(context).size. width*.09),
                             child: Text(
-                              "P.R.O.D.D.E.C",
+                              "PRODDEC",
                               style: TextStyle(
                                 fontFamily: 'Lekton',
                                 fontWeight: FontWeight.w700,

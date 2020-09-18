@@ -129,9 +129,11 @@ print(result.lengthSync());
                          if(value.isEmpty){
                            return 'You must enter the Event name';
                          }
-                       },
-
-                         
+                       
+                        if(value.length > 24){
+                          return 'Should be less than 24 characters';
+                       }
+                       }  
                       
                       ),
                     ),

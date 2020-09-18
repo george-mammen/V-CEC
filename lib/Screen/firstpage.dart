@@ -78,22 +78,50 @@ class _FirstPageState extends State<FirstPage> {
                         color: Colors.white,
                         child: ListView(
                           shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
+                         // physics: NeverScrollableScrollPhysics(),
                           children: <Widget>[
                             GestureDetector(
                               onTap: _launchURL1,
                               child: Container(
                                 height:
-                                    MediaQuery.of(context).size.height * .76,
+                                    MediaQuery.of(context).size.height * .57,
                                 //  height: SizeConfig.safeBlockVertical * 80,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
-                                    image: AssetImage("images/background3.gif"),
+                                    image: AssetImage("images/background.png"),
                                     fit: BoxFit.fill,
                                   ),
                                 ),
                               ),
                             ),
+                            
+                             SizedBox(
+                              height: MediaQuery.of(context).size.height * .05,
+                            ),
+
+                            Center(                          
+                              
+                                child: FlatButton(
+                                  onPressed: _launchURL3,
+                                  highlightColor: Colors.amberAccent,
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                      side: BorderSide(
+                                          color: Colors.black, width: 1.0)),
+                                  splashColor: Colors.black,
+                                  child: Text(
+                                    "   Moodle   ",
+                                    style: TextStyle(
+                                      fontFamily: 'Ubuntu',
+                                      fontWeight: FontWeight.w400,
+                                      // color: Colors.black,
+                                      fontSize: SizeConfig.safeBlockHorizontal * 6,
+                                      //  fontFamily: 'Arvo',
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            
                             SizedBox(
                               height: MediaQuery.of(context).size.height * .02,
                             ),
@@ -139,26 +167,8 @@ class _FirstPageState extends State<FirstPage> {
                                             //  fontFamily: 'Arvo',
                                           ),
                                         )),
-                                    GestureDetector(
-                                      onTap: _launchURL3,
-                                      child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                .1,
-                                        height:
-                                            MediaQuery.of(context).size.height *
-                                                .05,
-                                        // borderRadius: new BorderRadius.circular(24.0),
-                                        child: Image(
-                                          image: AssetImage(
-                                              "images/Moodle-icon.png"),
-                                          fit: BoxFit.fill,
-                                          // alignment: Alignment.topRight,
-                                        ),
-                                      ),
-                                    ),
                                     FlatButton(
-                                        highlightColor: Colors.amberAccent,
+                                        highlightColor: Colors.blue[300],
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
                                                 BorderRadius.circular(10),
@@ -190,7 +200,7 @@ class _FirstPageState extends State<FirstPage> {
                               ),
                             ),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * .06,
+                              height: MediaQuery.of(context).size.height * .08,
                             ),
                             Center(
                               child: GestureDetector(

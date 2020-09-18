@@ -92,8 +92,8 @@ class _Event4State extends State<Event4> {
                                 ),
                                 child: Material(
                                     borderRadius: BorderRadius.circular(26.0),
-                                    elevation: 14.0,
-                                    shadowColor: Color(0x802196F3),
+                                    elevation: 4.0,
+                                    shadowColor: Colors.grey,
                                     child: Row(
                                       children: <Widget>[
                                         Container(

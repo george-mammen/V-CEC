@@ -54,7 +54,7 @@ class _Event3State extends State<Event3> {
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
-              return Center(child: new Text('No Event'));
+              return Center(child: new Text('Loading....'));
             } else if (snapshot.hasError) {
               const Text('No data avaible right now');
             } else {
@@ -154,7 +154,7 @@ class _Event3State extends State<Event3> {
                                                                       context)
                                                                   .size
                                                                   .height *
-                                                              .03,
+                                                              .020,
                                                         ),
                                                       )),
                                                       

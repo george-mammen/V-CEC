@@ -60,7 +60,7 @@ class _NotifyState extends State<Notify> {
               (BuildContext context,  snapshot) {
             if (!snapshot.hasData) {
               return Center(
-                  child: new Text('Loading',
+                  child: new Text('Loading....',
                       style: TextStyle(
                           color: Colors.black,
                           fontFamily: 'Lekton',
@@ -113,8 +113,8 @@ class _NotifyState extends State<Notify> {
                             Container(
                               width: SizeConfig.safeBlockHorizontal * SizeConfig.screenWidth,
                               height: SizeConfig.safeBlockVertical * 18,
-                              child: Image.network(
-                                myNotify.data()['image'],
+                              child: Image(
+                                image: AssetImage("images/cec1.jpg"),
                                 fit: BoxFit.fitHeight,
                               ),
                             ),

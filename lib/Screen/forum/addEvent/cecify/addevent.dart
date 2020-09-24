@@ -6,7 +6,7 @@ import 'dart:io';
 import 'package:flutter_native_image/flutter_native_image.dart';
 
 
-import 'package:proddeccec/Screen/forum/addEvent/foces/dbevent.dart';
+import 'package:proddeccec/Screen/forum/addEvent/cecify/dbevent.dart';
 
 class ProfilePage extends StatefulWidget {
 

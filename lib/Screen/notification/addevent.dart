@@ -3,8 +3,9 @@ import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:firebase_storage/firebase_storage.dart';
-//import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'dart:io';
+import 'package:uuid/uuid.dart';
 
 //import 'package:path/path.dart';
 import 'package:proddeccec/Screen/notification/dbevent.dart';
@@ -17,7 +18,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  
+    
   TextEditingController eventNameController = TextEditingController();
   TextEditingController eventDetailsController = TextEditingController();
   TextEditingController eventLink1Controller = TextEditingController();
@@ -32,8 +33,11 @@ class _ProfilePageState extends State<ProfilePage> {
   bool isLoading = false;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   EventService eventService = EventService();
+  
   @override
   Widget build(BuildContext context) {
+ // var id =Uuid();
+   // var pEventId = id.v1();
     void validateAndUpload() {
       if (_formKey.currentState.validate()) {
         setState(() => isLoading = true);
@@ -85,6 +89,26 @@ print(result.lengthSync());
     return Scaffold(
       appBar: AppBar(
         title: Text('Notice Upload'),
+//         actions: [
+           
+           
+//           IconButton(
+            
+//             icon: Icon(Icons.delete),
+//             onPressed:()async{
+//               try{ 
+//              await FirebaseFirestore.instance.collection('eNotification').doc().delete();
+//              Fluttertoast.showToast(msg: 'Notification Deleted',toastLength: Toast.LENGTH_LONG,
+//             gravity: ToastGravity.CENTER,
+//             backgroundColor: Colors.purple,
+//             textColor: Colors.white,fontSize: 16.0);
+//             } 
+//             catch(e){
+// print(e.toString());
+//             }}
+//           )
+  
+//         ],
       ),
       body: Form(
         key: _formKey,

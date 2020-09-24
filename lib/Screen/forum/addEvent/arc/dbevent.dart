@@ -4,23 +4,22 @@ import 'package:uuid/uuid.dart';
 
 class EventService{
   FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  String ref = 'eNotification';
+  String ref = 'eArc';
 
 
-    void uploadDetails({String id,String title,String details, String link1, String link2, String link3,String image, String button1, String button2,String button3 }){
+    void uploadDetails({String eventName,String details, String date, String image,String link1,String link2,String button1,String button2 }){
       var id =Uuid();
       String pEventId = id.v1();
   _firestore.collection(ref).doc(pEventId).set({
-    'title' : title,
+    'name' : eventName,
     'id' : pEventId,
     'details' : details,
+    'date' : date,
+    'image' : image,
     'link1' : link1,
     'link2' : link2,
-    'link3' : link3,
-    'button1':button1,
-    'button2':button2,
-    'button3':button3,
-    'image' : image
+    'button1': button1,
+    'button2': button2
   });
   
     }

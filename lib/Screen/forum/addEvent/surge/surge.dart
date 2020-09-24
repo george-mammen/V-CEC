@@ -1,17 +1,17 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-//import 'package:proddeccec/Screen/forum/addEvent/proddec/addevent.dart';
-import 'package:proddeccec/Screen/forum/addEvent/iedc/login.dart';
+//import 'package:proddeccec/Screen/forum/addEvent/foces/addevent.dart';
+import 'package:proddeccec/Screen/forum/addEvent/surge/login.dart';
 import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Event5 extends StatefulWidget {
+class Event9 extends StatefulWidget {
   @override
-  _Event5State createState() => _Event5State();
+  _Event9State createState() => _Event9State();
 }
 
-class _Event5State extends State<Event5> {
+class _Event9State extends State<Event9> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -44,7 +44,7 @@ class _Event5State extends State<Event5> {
         ),
       ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('eIedc').snapshots(),
+          stream: FirebaseFirestore.instance.collection('eSurge').snapshots(),
           builder:
               (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
             if (!snapshot.hasData) {
@@ -109,7 +109,7 @@ class _Event5State extends State<Event5> {
                                             ),
                                           ),
                                         ),
-                                       Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: SizeConfig
                                                       .safeBlockHorizontal *

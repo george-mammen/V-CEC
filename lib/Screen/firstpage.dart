@@ -7,6 +7,7 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:proddeccec/Screen/forum/addEvent/cecify/cecify.dart';
 
 final FirebaseFirestore _db = FirebaseFirestore.instance;
 final FirebaseMessaging _fcm = FirebaseMessaging();
@@ -29,8 +30,7 @@ class _FirstPageState extends State<FirstPage> {
 
       await tokens.set({
         'token': fcmToken,
-        //'createdAt': FieldValue.serverTimestamp(), // optional
-        //   'platform': Platform.operatingSystem // optional
+       
       });
     }
   }
@@ -85,7 +85,6 @@ class _FirstPageState extends State<FirstPage> {
                               child: Container(
                                 height:
                                     MediaQuery.of(context).size.height * .57,
-                                //  height: SizeConfig.safeBlockVertical * 80,
                                 decoration: BoxDecoration(
                                   image: DecorationImage(
                                     image: AssetImage("images/background.png"),
@@ -94,34 +93,9 @@ class _FirstPageState extends State<FirstPage> {
                                 ),
                               ),
                             ),
-                            
-                             SizedBox(
+                            SizedBox(
                               height: MediaQuery.of(context).size.height * .05,
                             ),
-
-                            Center(                          
-                              
-                                child: FlatButton(
-                                  onPressed: _launchURL3,
-                                  highlightColor: Colors.amberAccent,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                      side: BorderSide(
-                                          color: Colors.black, width: 1.0)),
-                                  splashColor: Colors.black,
-                                  child: Text(
-                                    "   Moodle   ",
-                                    style: TextStyle(
-                                      fontFamily: 'Ubuntu',
-                                      fontWeight: FontWeight.w400,
-                                      // color: Colors.black,
-                                      fontSize: SizeConfig.safeBlockHorizontal * 6,
-                                      //  fontFamily: 'Arvo',
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            
                             SizedBox(
                               height: MediaQuery.of(context).size.height * .02,
                             ),
@@ -130,43 +104,46 @@ class _FirstPageState extends State<FirstPage> {
                                   MediaQuery.of(context).size.height * .007),
                               child: Align(
                                 alignment: Alignment.bottomCenter,
-                                // child: Padding(
-                                //    padding: EdgeInsets.only(
-                                //      bottom: SizeConfig.safeBlockVertical * 5),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    FlatButton(
-                                        highlightColor: Colors.blue[300],
-                                        shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(10),
-                                            side: BorderSide(
-                                                color: Colors.black,
-                                                width: 1.0)),
-                                        splashColor: Colors.black,
-                                        onPressed: () {
-                                          _saveDeviceToken();
+                                    Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          .35,
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              .045,
+                                      child: FlatButton(
+                                          highlightColor: Colors.blue[300],
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10),
+                                              side: BorderSide(
+                                                  color: Colors.black,
+                                                  width: 1.0)),
+                                          splashColor: Colors.black,
+                                          onPressed: () {
+                                            _saveDeviceToken();
 
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => Notify()),
-                                          );
-                                        },
-                                        child: Text(
-                                          "   Notice   ",
-                                          style: TextStyle(
-                                            fontFamily: 'Ubuntu',
-                                            fontWeight: FontWeight.w400,
-                                            // color: Colors.black,
-                                            fontSize:
-                                                SizeConfig.safeBlockHorizontal *
-                                                    6,
-                                            //  fontFamily: 'Arvo',
-                                          ),
-                                        )),
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (context) =>
+                                                      Notify()),
+                                            );
+                                          },
+                                          child: Text(
+                                            "   Notice   ",
+                                            style: TextStyle(
+                                              fontFamily: 'Ubuntu',
+                                              fontWeight: FontWeight.w400,
+                                              fontSize: SizeConfig
+                                                      .safeBlockHorizontal *
+                                                  6,
+                                            ),
+                                          )),
+                                    ),
                                     FlatButton(
                                         highlightColor: Colors.blue[300],
                                         shape: RoundedRectangleBorder(
@@ -188,26 +165,100 @@ class _FirstPageState extends State<FirstPage> {
                                           style: TextStyle(
                                             fontFamily: 'Ubuntu',
                                             fontWeight: FontWeight.w400,
-                                            // color: Colors.black,
                                             fontSize:
                                                 SizeConfig.safeBlockHorizontal *
                                                     6,
-                                            //  fontFamily: 'Arvo',
                                           ),
                                         )),
                                   ],
                                 ),
                               ),
                             ),
+                            Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                        left:
+                                            MediaQuery.of(context).size.width *
+                                                .00),
+                                    width:
+                                        MediaQuery.of(context).size.width * .35,
+                                    height: MediaQuery.of(context).size.height *
+                                        .045,
+                                    child: FlatButton(
+                                      onPressed: _launchURL3,
+                                      highlightColor: Colors.blue[300],
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          side: BorderSide(
+                                              color: Colors.black, width: 1.0)),
+                                      splashColor: Colors.black,
+                                      child: Container(
+                                        margin: EdgeInsets.only(
+                                            left: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .04,
+                                            right: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                .02),
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image:
+                                                AssetImage("images/moodle.png"),
+                                            fit: BoxFit.contain,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                  Container(
+                                    width: MediaQuery.of(context).size.width *
+                                        .369,
+                                    height: MediaQuery.of(context).size.width *
+                                        .095,
+                                    child: FlatButton(
+                                      highlightColor: Colors.blue[300],
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                          side: BorderSide(
+                                              color: Colors.black, width: 1.0)),
+                                      splashColor: Colors.black,
+                                      onPressed: () {
+                                        Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                              builder: (context) => EventC(),
+                                            ));
+                                      },
+                                      child: Container(
+                                        width:
+                                            MediaQuery.of(context).size.width *
+                                                .17,
+                                        decoration: BoxDecoration(
+                                          image: DecorationImage(
+                                            image:
+                                                AssetImage("images/cecify.png"),
+                                            fit: BoxFit.fitWidth,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ]),
                             SizedBox(
-                              height: MediaQuery.of(context).size.height * .08,
+                              height: MediaQuery.of(context).size.height * .055,
                             ),
                             Center(
                               child: GestureDetector(
                                 onTap: _launchURL2,
                                 child: RichText(
                                   text: TextSpan(
-                                    //  style: Theme.of(context).textTheme.body1,
                                     children: [
                                       TextSpan(
                                         text: 'With ',

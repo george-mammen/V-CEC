@@ -108,42 +108,35 @@ class _FirstPageState extends State<FirstPage> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceEvenly,
                                   children: [
-                                    Container(
-                                      width: MediaQuery.of(context).size.width *
-                                          .35,
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              .045,
-                                      child: FlatButton(
-                                          highlightColor: Colors.blue[300],
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius:
-                                                  BorderRadius.circular(10),
-                                              side: BorderSide(
-                                                  color: Colors.black,
-                                                  width: 1.0)),
-                                          splashColor: Colors.black,
-                                          onPressed: () {
-                                            _saveDeviceToken();
+                                    FlatButton(
+                                        highlightColor: Colors.blue[300],
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(10),
+                                            side: BorderSide(
+                                                color: Colors.black,
+                                                width: 1.0)),
+                                        splashColor: Colors.black,
+                                        onPressed: () {
+                                          _saveDeviceToken();
 
-                                            Navigator.push(
-                                              context,
-                                              MaterialPageRoute(
-                                                  builder: (context) =>
-                                                      Notify()),
-                                            );
-                                          },
-                                          child: Text(
-                                            "   Notice   ",
-                                            style: TextStyle(
-                                              fontFamily: 'Ubuntu',
-                                              fontWeight: FontWeight.w400,
-                                              fontSize: SizeConfig
-                                                      .safeBlockHorizontal *
-                                                  6,
-                                            ),
-                                          )),
-                                    ),
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) =>
+                                                    Notify()),
+                                          );
+                                        },
+                                        child: Text(
+                                          "   Notice   ",
+                                          style: TextStyle(
+                                            fontFamily: 'Ubuntu',
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: SizeConfig
+                                                    .safeBlockHorizontal *
+                                                6,
+                                          ),
+                                        )),
                                     FlatButton(
                                         highlightColor: Colors.blue[300],
                                         shape: RoundedRectangleBorder(
@@ -174,19 +167,15 @@ class _FirstPageState extends State<FirstPage> {
                                 ),
                               ),
                             ),
+SizedBox(
+                              height: SizeConfig.safeBlockVertical * 2,
+                            ),
                             Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Container(
-                                    padding: EdgeInsets.only(
-                                        left:
-                                            MediaQuery.of(context).size.width *
-                                                .00),
-                                    width:
-                                        MediaQuery.of(context).size.width * .35,
-                                    height: MediaQuery.of(context).size.height *
-                                        .045,
+                                  Padding(
+                                    padding:  EdgeInsets.only(right:SizeConfig.safeBlockHorizontal * 3),
                                     child: FlatButton(
                                       onPressed: _launchURL3,
                                       highlightColor: Colors.blue[300],
@@ -197,30 +186,23 @@ class _FirstPageState extends State<FirstPage> {
                                               color: Colors.black, width: 1.0)),
                                       splashColor: Colors.black,
                                       child: Container(
-                                        margin: EdgeInsets.only(
-                                            left: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .04,
-                                            right: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                .02),
+                                        height: SizeConfig.safeBlockVertical * 6,
+                                        width:SizeConfig.safeBlockHorizontal * 20,
+                                        // margin: EdgeInsets.only(
+                                        //     left: SizeConfig.safeBlockHorizontal * 4,
+                                        //     right:SizeConfig.safeBlockHorizontal * 4),
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
                                             image:
                                                 AssetImage("images/moodle.png"),
-                                            fit: BoxFit.contain,
+                                            fit: BoxFit.scaleDown,
                                           ),
                                         ),
                                       ),
                                     ),
                                   ),
-                                  Container(
-                                    width: MediaQuery.of(context).size.width *
-                                        .369,
-                                    height: MediaQuery.of(context).size.width *
-                                        .095,
+                                  Padding(
+                                    padding:  EdgeInsets.only(right:SizeConfig.safeBlockHorizontal * 1.5),
                                     child: FlatButton(
                                       highlightColor: Colors.blue[300],
                                       shape: RoundedRectangleBorder(
@@ -237,9 +219,8 @@ class _FirstPageState extends State<FirstPage> {
                                             ));
                                       },
                                       child: Container(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                .17,
+                                        width:SizeConfig.safeBlockHorizontal * 20,
+                                            height: SizeConfig.safeBlockVertical * 6,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
                                             image:

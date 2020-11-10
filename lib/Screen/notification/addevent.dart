@@ -174,9 +174,9 @@ print(result.lengthSync());
                        if(value.isEmpty){
                          return 'You must enter some words';
                        }
-                       if(value.length > 50){
-                          return 'Should be less than 50 characters';
-                       }
+                      //  if(value.length > 50){
+                      //     return 'Should be less than 50 characters';
+                      //  }
                      },
                     ),
 

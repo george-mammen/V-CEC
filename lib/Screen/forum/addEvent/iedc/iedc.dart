@@ -109,7 +109,7 @@ class _Event5State extends State<Event5> {
                                             ),
                                           ),
                                         ),
-                                       Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(
                                               left: SizeConfig
                                                       .safeBlockHorizontal *
@@ -136,11 +136,9 @@ class _Event5State extends State<Event5> {
                                                     children: <Widget>[
                                                       Container(
                                                           child: Text(
-                                                        myEvent
-                                                            .data()['name'],
+                                                        myEvent.data()['name'],
                                                         style: TextStyle(
-                                                          fontFamily:
-                                                              'Ubuntu',
+                                                          fontFamily: 'Ubuntu',
                                                           fontWeight:
                                                               FontWeight.w700,
                                                           color: Colors.black,
@@ -151,70 +149,74 @@ class _Event5State extends State<Event5> {
                                                               .020,
                                                         ),
                                                       )),
-                                                      
                                                       Padding(
-                                                        padding: EdgeInsets.only(
-                                                  bottom: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      .005,
-                                                  top: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      .02,
-                                                ),
-                                                          child: Text(
-                                                        myEvent.data()[
-                                                            'details'],
-                                                        style: TextStyle(
-                                                          fontFamily:
-                                                              'Lekton',
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          color:
-                                                              Colors.black54,
-                                                          fontSize: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              .012,
-                                                        ),
-                                                      )),
-                                                     
-                                                      Padding(
-                                                        padding: EdgeInsets.only(
-                                                  bottom: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      .005,
-                                                  top: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      .01,
-                                                ),
-                                                            child: Text(
-                                                          myEvent
-                                                              .data()['date'],
-                                                          style: TextStyle(
-                                                            fontFamily:
-                                                                'Ubuntu',
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w700,
-                                                            color:
-                                                                Colors.blueGrey,
-                                                            fontSize: MediaQuery.of(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                            bottom: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                .005,
+                                                            top: MediaQuery.of(
                                                                         context)
                                                                     .size
                                                                     .height *
-                                                                .021,
+                                                                .02,
                                                           ),
-                                                        )),
-                                                      
+                                                          child: Text(
+                                                            myEvent.data()[
+                                                                'details'],
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  'Lekton',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: Colors
+                                                                  .black54,
+                                                              fontSize: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  .012,
+                                                            ),
+                                                          )),
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                            bottom: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                .005,
+                                                            top: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height *
+                                                                .01,
+                                                          ),
+                                                          child: Text(
+                                                            myEvent
+                                                                .data()['date'],
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  'Ubuntu',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: Colors
+                                                                  .blueGrey,
+                                                              fontSize: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  .021,
+                                                            ),
+                                                          )),
                                                       Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                               .spaceAround,
+                                                                .spaceAround,
                                                         children: <Widget>[
                                                           FlatButton(
                                                               onPressed:
@@ -231,7 +233,8 @@ class _Event5State extends State<Event5> {
                                                                           .w700,
                                                                   color: Colors
                                                                       .blue,
-                                                                  fontSize: MediaQuery.of(context)
+                                                                  fontSize: MediaQuery.of(
+                                                                              context)
                                                                           .size
                                                                           .height *
                                                                       .016,
@@ -252,7 +255,8 @@ class _Event5State extends State<Event5> {
                                                                           .w700,
                                                                   color: Colors
                                                                       .blue,
-                                                                  fontSize: MediaQuery.of(context)
+                                                                  fontSize: MediaQuery.of(
+                                                                              context)
                                                                           .size
                                                                           .height *
                                                                       .016,

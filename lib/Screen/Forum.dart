@@ -229,7 +229,6 @@ class _ForumState extends State<Forum> {
                   Container(
                       margin: EdgeInsets.all(
                           MediaQuery.of(context).size.height * .01),
-
                       child: FlatButton(
                           highlightColor: Colors.grey[350],
                           shape: RoundedRectangleBorder(
@@ -244,43 +243,38 @@ class _ForumState extends State<Forum> {
                               MaterialPageRoute(builder: (context) => Event6()),
                             );
                           },
-                          child: Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .04),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * .2,
-                                    height: MediaQuery.of(context).size.height *
-                                        .09,
-                                    child: Image(
-                                      image: AssetImage("images/foces.png"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
+                          child: Row(children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .04),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * .2,
+                                height:
+                                    MediaQuery.of(context).size.height * .09,
+                                child: Image(
+                                  image: AssetImage("images/foces.png"),
+                                  fit: BoxFit.fill,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .09),
-                                  child: Text(
-                                    "FOCES",
-                                    style: TextStyle(
-                                      fontFamily: 'Lekton',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 6,
-                                    ),
-                                  ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .09),
+                              child: Text(
+                                "FOCES",
+                                style: TextStyle(
+                                  fontFamily: 'Lekton',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: SizeConfig.safeBlockHorizontal * 6,
                                 ),
-                              ]))),
+                              ),
+                            ),
+                          ]))),
                   Container(
                       margin: EdgeInsets.all(
                           MediaQuery.of(context).size.height * .01),
-
-                    
                       child: FlatButton(
                           highlightColor: Colors.blue[300],
                           shape: RoundedRectangleBorder(
@@ -295,43 +289,38 @@ class _ForumState extends State<Forum> {
                               MaterialPageRoute(builder: (context) => Event5()),
                             );
                           },
-                          child: Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .04),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * .2,
-                                    height: MediaQuery.of(context).size.height *
-                                        .09,
-                                    child: Image(
-                                      image: AssetImage("images/iedc.png"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
+                          child: Row(children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .04),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * .2,
+                                height:
+                                    MediaQuery.of(context).size.height * .09,
+                                child: Image(
+                                  image: AssetImage("images/iedc.png"),
+                                  fit: BoxFit.fill,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .09),
-                                  child: Text(
-                                    "IEDC",
-                                    style: TextStyle(
-                                      fontFamily: 'Lekton',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 6,
-                                    ),
-                                  ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .09),
+                              child: Text(
+                                "IEDC",
+                                style: TextStyle(
+                                  fontFamily: 'Lekton',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: SizeConfig.safeBlockHorizontal * 6,
                                 ),
-                              ]))),
+                              ),
+                            ),
+                          ]))),
                   Container(
                       margin: EdgeInsets.all(
                           MediaQuery.of(context).size.height * .01),
-
-                      
                       child: FlatButton(
                           highlightColor: Colors.lightBlueAccent,
                           shape: RoundedRectangleBorder(
@@ -346,43 +335,38 @@ class _ForumState extends State<Forum> {
                               MaterialPageRoute(builder: (context) => Event7()),
                             );
                           },
-                          child: Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .04),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * .2,
-                                    height: MediaQuery.of(context).size.height *
-                                        .09,
-                                    child: Image(
-                                      image: AssetImage("images/arc.png"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
+                          child: Row(children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .04),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * .2,
+                                height:
+                                    MediaQuery.of(context).size.height * .09,
+                                child: Image(
+                                  image: AssetImage("images/arc.png"),
+                                  fit: BoxFit.fill,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .09),
-                                  child: Text(
-                                    "ARC",
-                                    style: TextStyle(
-                                      fontFamily: 'Lekton',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 6,
-                                    ),
-                                  ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .09),
+                              child: Text(
+                                "ARC",
+                                style: TextStyle(
+                                  fontFamily: 'Lekton',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: SizeConfig.safeBlockHorizontal * 6,
                                 ),
-                              ]))),
+                              ),
+                            ),
+                          ]))),
                   Container(
                       margin: EdgeInsets.all(
                           MediaQuery.of(context).size.height * .01),
-
-                     
                       child: FlatButton(
                           highlightColor: Colors.brown,
                           shape: RoundedRectangleBorder(
@@ -397,43 +381,38 @@ class _ForumState extends State<Forum> {
                               MaterialPageRoute(builder: (context) => Event9()),
                             );
                           },
-                          child: Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .04),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * .2,
-                                    height: MediaQuery.of(context).size.height *
-                                        .09,
-                                    child: Image(
-                                      image: AssetImage("images/surge.png"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
+                          child: Row(children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .04),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * .2,
+                                height:
+                                    MediaQuery.of(context).size.height * .09,
+                                child: Image(
+                                  image: AssetImage("images/surge.png"),
+                                  fit: BoxFit.fill,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .09),
-                                  child: Text(
-                                    "SURGE",
-                                    style: TextStyle(
-                                      fontFamily: 'Lekton',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 6,
-                                    ),
-                                  ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .09),
+                              child: Text(
+                                "SURGE",
+                                style: TextStyle(
+                                  fontFamily: 'Lekton',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: SizeConfig.safeBlockHorizontal * 6,
                                 ),
-                              ]))),
+                              ),
+                            ),
+                          ]))),
                   Container(
                       margin: EdgeInsets.all(
                           MediaQuery.of(context).size.height * .01),
-
-                     
                       child: FlatButton(
                           highlightColor: Colors.blueGrey,
                           shape: RoundedRectangleBorder(
@@ -448,38 +427,35 @@ class _ForumState extends State<Forum> {
                               MaterialPageRoute(builder: (context) => Event8()),
                             );
                           },
-                          child: Row(
-                              children: [
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .04),
-                                  child: Container(
-                                    width:
-                                        MediaQuery.of(context).size.width * .2,
-                                    height: MediaQuery.of(context).size.height *
-                                        .09,
-                                    child: Image(
-                                      image: AssetImage("images/exess.png"),
-                                      fit: BoxFit.fill,
-                                    ),
-                                  ),
+                          child: Row(children: [
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .04),
+                              child: Container(
+                                width: MediaQuery.of(context).size.width * .2,
+                                height:
+                                    MediaQuery.of(context).size.height * .09,
+                                child: Image(
+                                  image: AssetImage("images/exess.png"),
+                                  fit: BoxFit.fill,
                                 ),
-                                Padding(
-                                  padding: EdgeInsets.only(
-                                      left: MediaQuery.of(context).size.width *
-                                          .09),
-                                  child: Text(
-                                    "EXESS",
-                                    style: TextStyle(
-                                      fontFamily: 'Lekton',
-                                      fontWeight: FontWeight.w700,
-                                      fontSize:
-                                          SizeConfig.safeBlockHorizontal * 6,
-                                    ),
-                                  ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.only(
+                                  left:
+                                      MediaQuery.of(context).size.width * .09),
+                              child: Text(
+                                "EXESS",
+                                style: TextStyle(
+                                  fontFamily: 'Lekton',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: SizeConfig.safeBlockHorizontal * 6,
                                 ),
-                              ]))),
+                              ),
+                            ),
+                          ]))),
                 ],
               ),
       ),

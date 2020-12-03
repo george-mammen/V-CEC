@@ -5,18 +5,12 @@ import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
-
 class Notify extends StatefulWidget {
-  
   @override
   _NotifyState createState() => _NotifyState();
 }
 
 class _NotifyState extends State<Notify> {
-
-  
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
@@ -31,21 +25,15 @@ class _NotifyState extends State<Notify> {
           ),
         ),
         centerTitle: true,
-         actions: [
-           
-           
+        actions: [
           IconButton(
-            
             icon: Icon(Icons.add),
-            onPressed:(){ 
+            onPressed: () {
               Navigator.push(
-                         context,
-                     MaterialPageRoute(
-                          builder: (context) =>
-                             LoginPage()
-                    ),
-                    );
-            } ,
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
+            },
           )
         ],
         backgroundColor: Colors.white,
@@ -55,9 +43,10 @@ class _NotifyState extends State<Notify> {
         ),
       ),
       body: StreamBuilder(
-          stream: FirebaseFirestore.instance.collection('eNotification').snapshots(),
-          builder:
-              (BuildContext context,  snapshot) {
+          stream: FirebaseFirestore.instance
+              .collection('eNotification')
+              .snapshots(),
+          builder: (BuildContext context, snapshot) {
             if (!snapshot.hasData) {
               return Center(
                   child: new Text('Loading....',
@@ -90,7 +79,7 @@ class _NotifyState extends State<Notify> {
                       }
                     }
 
-                     _launchURL3() async {
+                    _launchURL3() async {
                       final url = myNotify.data()['link3'];
                       if (await canLaunch(url)) {
                         await launch(url);
@@ -99,19 +88,20 @@ class _NotifyState extends State<Notify> {
                       }
                     }
 
-
                     return Container(
                       margin: EdgeInsets.all(10.0),
                       child: Card(
                         shadowColor: Colors.grey,
                         elevation: 4.0,
                         shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(MediaQuery.of(context).size.height * 0.02),
+                          borderRadius: BorderRadius.circular(
+                              MediaQuery.of(context).size.height * 0.02),
                         ),
                         child: Column(
                           children: <Widget>[
                             Container(
-                              width: SizeConfig.safeBlockHorizontal * SizeConfig.screenWidth,
+                              width: SizeConfig.safeBlockHorizontal *
+                                  SizeConfig.screenWidth,
                               height: SizeConfig.safeBlockVertical * 18,
                               child: Image(
                                 image: AssetImage("images/cec1.jpg"),
@@ -119,33 +109,39 @@ class _NotifyState extends State<Notify> {
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
+                              padding: EdgeInsets.all(
+                                  MediaQuery.of(context).size.height * .01),
                               child: Text(
-                                myNotify.data()['title'], style: TextStyle(
-                                color: Colors.black,
-                                fontFamily: 'Lekton',
-                                fontWeight: FontWeight.w700,
-                                fontSize: MediaQuery.of(context).size.height * .03,
-
-                              ),
+                                myNotify.data()['title'],
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontFamily: 'Lekton',
+                                  fontWeight: FontWeight.w700,
+                                  fontSize:
+                                      MediaQuery.of(context).size.height * .03,
+                                ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.all(MediaQuery.of(context).size.height * .01),
+                              padding: EdgeInsets.all(
+                                  MediaQuery.of(context).size.height * .01),
                               child: Center(
                                 child: Text(
-                                  myNotify.data()['details'], style: TextStyle(
-                                  fontFamily: 'Lekton',
-                                  fontWeight: FontWeight.w400,
-                                  color: Colors.blueGrey,
-                                  fontSize: MediaQuery.of(context).size.height * .017,
-                                ),
+                                  myNotify.data()['details'],
+                                  style: TextStyle(
+                                    fontFamily: 'Lekton',
+                                    fontWeight: FontWeight.w400,
+                                    color: Colors.blueGrey,
+                                    fontSize:
+                                        MediaQuery.of(context).size.height *
+                                            .017,
+                                  ),
                                 ),
                               ),
                             ),
-
                             Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
                                 children: <Widget>[
                                   FlatButton(
                                       onPressed: _launchURL1,
@@ -155,7 +151,10 @@ class _NotifyState extends State<Notify> {
                                           fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.w700,
                                           color: Colors.blue,
-                                          fontSize: MediaQuery.of(context).size.height *.024,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              .024,
                                         ),
                                       )),
                                   FlatButton(
@@ -166,10 +165,13 @@ class _NotifyState extends State<Notify> {
                                           fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.w700,
                                           color: Colors.blue,
-                                          fontSize: MediaQuery.of(context).size.height *.024,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              .024,
                                         ),
                                       )),
-                                      FlatButton(
+                                  FlatButton(
                                       onPressed: _launchURL3,
                                       child: Text(
                                         myNotify.data()['button3'],
@@ -177,13 +179,15 @@ class _NotifyState extends State<Notify> {
                                           fontFamily: 'Ubuntu',
                                           fontWeight: FontWeight.w700,
                                           color: Colors.blue,
-                                          fontSize: MediaQuery.of(context).size.height *.024,
+                                          fontSize: MediaQuery.of(context)
+                                                  .size
+                                                  .height *
+                                              .024,
                                         ),
                                       )),
                                 ])
                           ],
                         ),
-
                       ),
                     );
                   });
@@ -192,7 +196,6 @@ class _NotifyState extends State<Notify> {
     );
   }
 }
-
 
 // Developed by Arjun Vishnu Varma.
 // Date: August 2020.

@@ -5,8 +5,6 @@ import 'package:proddeccec/backend/size_config.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class Event1 extends StatefulWidget {
   @override
   _Event1State createState() => _Event1State();
@@ -31,15 +29,12 @@ class _Event1State extends State<Event1> {
         actions: [
           IconButton(
             icon: Icon(Icons.add),
-            onPressed:(){
+            onPressed: () {
               Navigator.push(
-                         context,
-                     MaterialPageRoute(
-                          builder: (context) =>
-                             LoginPage()
-                    ),
-                    );
-            } ,
+                context,
+                MaterialPageRoute(builder: (context) => LoginPage()),
+              );
+            },
           )
         ],
         backgroundColor: Colors.white,
@@ -61,7 +56,7 @@ class _Event1State extends State<Event1> {
                   itemBuilder: (context, index) {
                     DocumentSnapshot myEvent = snapshot.data.docs[index];
 
-                     _launchURL1() async {
+                    _launchURL1() async {
                       final url = myEvent.data()['link1'];
                       if (await canLaunch(url)) {
                         await launch(url);
@@ -140,11 +135,9 @@ class _Event1State extends State<Event1> {
                                                     children: <Widget>[
                                                       Container(
                                                           child: Text(
-                                                        myEvent
-                                                            .data()['name'],
+                                                        myEvent.data()['name'],
                                                         style: TextStyle(
-                                                          fontFamily:
-                                                              'Ubuntu',
+                                                          fontFamily: 'Ubuntu',
                                                           fontWeight:
                                                               FontWeight.w700,
                                                           color: Colors.black,
@@ -155,70 +148,74 @@ class _Event1State extends State<Event1> {
                                                               .020,
                                                         ),
                                                       )),
-                                                      
                                                       Padding(
-                                                        padding: EdgeInsets.only(
-                                                  bottom: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      .005,
-                                                  top: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      .02,
-                                                ),
-                                                          child: Text(
-                                                        myEvent.data()[
-                                                            'details'],
-                                                        style: TextStyle(
-                                                          fontFamily:
-                                                              'Lekton',
-                                                          fontWeight:
-                                                              FontWeight.w700,
-                                                          color:
-                                                              Colors.black54,
-                                                          fontSize: MediaQuery.of(
-                                                                      context)
-                                                                  .size
-                                                                  .height *
-                                                              .012,
-                                                        ),
-                                                      )),
-                                                     
-                                                      Padding(
-                                                        padding: EdgeInsets.only(
-                                                  bottom: MediaQuery.of(context)
-                                                          .size
-                                                          .width *
-                                                      .005,
-                                                  top: MediaQuery.of(context)
-                                                          .size
-                                                          .height *
-                                                      .01,
-                                                ),
-                                                            child: Text(
-                                                          myEvent
-                                                              .data()['date'],
-                                                          style: TextStyle(
-                                                            fontFamily:
-                                                                'Ubuntu',
-                                                            fontWeight:
-                                                                FontWeight
-                                                                    .w700,
-                                                            color:
-                                                                Colors.blueGrey,
-                                                            fontSize: MediaQuery.of(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                            bottom: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                .005,
+                                                            top: MediaQuery.of(
                                                                         context)
                                                                     .size
                                                                     .height *
-                                                                .021,
+                                                                .02,
                                                           ),
-                                                        )),
-                                                      
+                                                          child: Text(
+                                                            myEvent.data()[
+                                                                'details'],
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  'Lekton',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: Colors
+                                                                  .black54,
+                                                              fontSize: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  .012,
+                                                            ),
+                                                          )),
+                                                      Padding(
+                                                          padding:
+                                                              EdgeInsets.only(
+                                                            bottom: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .width *
+                                                                .005,
+                                                            top: MediaQuery.of(
+                                                                        context)
+                                                                    .size
+                                                                    .height *
+                                                                .01,
+                                                          ),
+                                                          child: Text(
+                                                            myEvent
+                                                                .data()['date'],
+                                                            style: TextStyle(
+                                                              fontFamily:
+                                                                  'Ubuntu',
+                                                              fontWeight:
+                                                                  FontWeight
+                                                                      .w700,
+                                                              color: Colors
+                                                                  .blueGrey,
+                                                              fontSize: MediaQuery.of(
+                                                                          context)
+                                                                      .size
+                                                                      .height *
+                                                                  .021,
+                                                            ),
+                                                          )),
                                                       Row(
                                                         mainAxisAlignment:
                                                             MainAxisAlignment
-                                                               .spaceAround,
+                                                                .spaceAround,
                                                         children: <Widget>[
                                                           FlatButton(
                                                               onPressed:
@@ -235,7 +232,8 @@ class _Event1State extends State<Event1> {
                                                                           .w700,
                                                                   color: Colors
                                                                       .blue,
-                                                                  fontSize: MediaQuery.of(context)
+                                                                  fontSize: MediaQuery.of(
+                                                                              context)
                                                                           .size
                                                                           .height *
                                                                       .016,
@@ -256,7 +254,8 @@ class _Event1State extends State<Event1> {
                                                                           .w700,
                                                                   color: Colors
                                                                       .blue,
-                                                                  fontSize: MediaQuery.of(context)
+                                                                  fontSize: MediaQuery.of(
+                                                                              context)
                                                                           .size
                                                                           .height *
                                                                       .016,
@@ -279,4 +278,3 @@ class _Event1State extends State<Event1> {
     );
   }
 }
-

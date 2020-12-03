@@ -4,41 +4,30 @@ import 'package:flutter/material.dart';
 import 'package:proddeccec/Screen/home.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-
-
-
 void main()
 //=>
-  async{
-   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(); 
+async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(
     //DevicePreview(
-  //builder: (context) => 
- 
-  MyApp(),
+    //builder: (context) =>
+
+    MyApp(),
 //),
-);
-
+  );
 }
+
 class MyApp extends StatelessWidget {
-
   @override
- 
-    
-    
   Widget build(BuildContext context) {
-
     return MaterialApp(
-      
-    // builder: DevicePreview.appBuilder,
-      debugShowCheckedModeBanner: false,
-      title: 'V-CEC',
-           home: 
-      HomePage()
-       );
+
+        // builder: DevicePreview.appBuilder,
+        debugShowCheckedModeBanner: false,
+        title: 'V-CEC',
+        home: HomePage());
   }
 }
-
 
 // Created By Arjun Vishnu Varma //

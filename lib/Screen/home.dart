@@ -13,7 +13,6 @@ class HomePage extends StatelessWidget {
       body:
           // Center(child:Text(sizingInformation.toString()),),
           FirstPage(),
-     
     );
   }
 }

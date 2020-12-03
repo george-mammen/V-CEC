@@ -5,18 +5,14 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'dart:io';
 import 'package:flutter_native_image/flutter_native_image.dart';
 
-
 import 'package:proddeccec/Screen/forum/addEvent/surge/dbevent.dart';
 
 class ProfilePage extends StatefulWidget {
-
-  
   @override
   _ProfilePageState createState() => _ProfilePageState();
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  
   TextEditingController eventNameController = TextEditingController();
   TextEditingController eventDetailsController = TextEditingController();
   TextEditingController eventDateController = TextEditingController();
@@ -29,7 +25,7 @@ class _ProfilePageState extends State<ProfilePage> {
   bool isLoading = false;
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   EventService eventService = EventService();
-  
+
   @override
   Widget build(BuildContext context) {
     void validateAndUpload() {
@@ -52,13 +48,17 @@ class _ProfilePageState extends State<ProfilePage> {
                 button2: eventButton2Controller.text,
                 link1: eventLink1Controller.text,
                 link2: eventLink2Controller.text,
-                image: imageL
-                );
+                image: imageL);
             _formKey.currentState.reset();
             setState(() => isLoading = false);
-             Fluttertoast.showToast(msg: 'Event added',toastLength: Toast.LENGTH_LONG, gravity: ToastGravity.CENTER,
-            backgroundColor: Colors.blue[300],textColor: Colors.white,fontSize: 16.0);
-           // Navigator.pop(context);
+            Fluttertoast.showToast(
+                msg: 'Event added',
+                toastLength: Toast.LENGTH_LONG,
+                gravity: ToastGravity.CENTER,
+                backgroundColor: Colors.blue[300],
+                textColor: Colors.white,
+                fontSize: 16.0);
+            // Navigator.pop(context);
           });
         } else {
           setState(() => isLoading = false);
@@ -68,18 +68,16 @@ class _ProfilePageState extends State<ProfilePage> {
     }
 
     Future getImage() async {
-      
       var image = await ImagePicker.pickImage(source: ImageSource.gallery);
 
-      File result = await FlutterNativeImage.compressImage(image.path,
-    quality: 10);
-print(image.lengthSync());
-print(result.lengthSync());
+      File result =
+          await FlutterNativeImage.compressImage(image.path, quality: 10);
+      print(image.lengthSync());
+      print(result.lengthSync());
 
       setState(() {
         _image = result;
         print('Image Path $_image');
-
       });
     }
 
@@ -95,7 +93,8 @@ print(result.lengthSync());
               : ListView(
                   children: <Widget>[
                     Padding(
-                      padding:  EdgeInsets.only(top:MediaQuery.of(context).size.height *.02),
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * .02),
                       child: Align(
                         alignment: Alignment.center,
                         child: OutlineButton(
@@ -118,10 +117,9 @@ print(result.lengthSync());
                         ),
                       ),
                     ),
-
-
                     Padding(
-                      padding: EdgeInsets.only(top:MediaQuery.of(context).size.width * .1),
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.width * .1),
                       child: TextFormField(
                         controller: eventNameController,
                         decoration: InputDecoration(
@@ -129,100 +127,90 @@ print(result.lengthSync());
                           hintText: 'Event name',
                           labelText: 'Event name',
                         ),
-                       validator: (value){
-                         if(value.isEmpty){
-                           return 'You must enter the Event name';
-                         }
-                          if(value.length > 24){
-                          return 'Should be less than 24 characters';
-                       }
-                       },
-
-                         
-                      
+                        validator: (value) {
+                          if (value.isEmpty) {
+                            return 'You must enter the Event name';
+                          }
+                          if (value.length > 24) {
+                            return 'Should be less than 24 characters';
+                          }
+                        },
                       ),
                     ),
                     TextFormField(
                       controller: eventDetailsController,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'Short words',
                         labelText: 'Short Words',
                       ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter some words';
-                       }
-                       if(value.length > 40){
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'You must enter some words';
+                        }
+                        if (value.length > 40) {
                           return 'Should be less than 40 characters';
-                       }
-                     },
+                        }
+                      },
                     ),
                     TextFormField(
                       controller: eventDateController,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         hintText: 'Date (DD/MM/YYYY)',
                         labelText: 'Date (DD/MM/YYYY)',
                       ),
-                     validator: (value){
-                       if(value.isEmpty){
-                         return 'You must enter the date';
-                       }
-                     },
+                      validator: (value) {
+                        if (value.isEmpty) {
+                          return 'You must enter the date';
+                        }
+                      },
                     ),
                     TextFormField(
                       controller: eventButton1Controller,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         labelText: 'Link for more details',
                         hintText: 'eg: Instagram,facebook ',
                       ),
-                     validator: (value){
-                      
-                       if(value.length > 10){
+                      validator: (value) {
+                        if (value.length > 10) {
                           return 'Should be less than 10 characters';
-                       }
-                     },
+                        }
+                      },
                     ),
-
                     TextFormField(
                       controller: eventLink1Controller,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         labelText: 'Link',
                         hintText: 'eg: https://www.google.com',
                       ),
-                  
                     ),
                     TextFormField(
                       controller: eventButton2Controller,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         labelText: 'Link Name',
                         hintText: 'eg: Register',
                       ),
-                               validator: (value){
-                      
-                       if(value.length > 10){
+                      validator: (value) {
+                        if (value.length > 10) {
                           return 'Should be less than 10 characters';
-                       }
-                     },       
+                        }
+                      },
                     ),
-
-                     TextFormField(
+                    TextFormField(
                       controller: eventLink2Controller,
-                      decoration:  InputDecoration(
+                      decoration: InputDecoration(
                         icon: Icon(Icons.person),
                         labelText: 'Link',
                         hintText: 'eg: https://docs.google.com/forms',
                       ),
-                  
                     ),
                     SizedBox(
-                      height:MediaQuery.of(context).size.width * .1,
+                      height: MediaQuery.of(context).size.width * .1,
                     ),
-                   
                     RaisedButton(
                       color: Color(0xff476cfb),
                       onPressed: () {

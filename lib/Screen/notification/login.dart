@@ -35,92 +35,99 @@ class _State extends State<LoginPage> {
           centerTitle: true,
         ),
         body: Center(
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: MediaQuery.of(context).size.height,
-            child: FutureBuilder(
-              future: LoadStories(),
-                
-                   
-                builder:
-                    (BuildContext context, AsyncSnapshot<DocumentSnapshot> snapshot) {
-                  if (!snapshot.hasData) {
-                    return Center(child: new Text(''));
-                  } else {
-                   
-                        Map<String,dynamic> data =snapshot.data.data();
-                       String id= data['Id'];
-                       String password = data['password'];
-                      
-                          return Center(
-                              child: Card(
-                                  shape: RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(26.0),
-                                  ),
-                                  child: Material(
-                                    borderRadius: BorderRadius.circular(26.0),
-                                    elevation: 20.0,
-                                    shadowColor: Color(0x802196F3),
-                                    child: Container(
-                                        width: MediaQuery.of(context).size.width * .7,
-                                        height: MediaQuery.of(context).size.width * .8,
-                                        padding: EdgeInsets.all(MediaQuery.of(context).size.width * .09),
-                                        child: Form(
-                                          key: _formKey,
-                                          child: SingleChildScrollView(
-                                              child: Column(children: <Widget>[
-                                            TextFormField(
-                                              controller: nameController,
-                                              decoration:
-                                                  InputDecoration(labelText: 'Username'),
-                                              keyboardType:
-                                                  TextInputType.emailAddress,
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  name1 = value;
-                                                });
-                                              },
-                                              validator: (value) {
-                                                if (value.isEmpty) {
-                                                  return 'Enter id';
-                                                }
-                                                return null;
-                                              },
-                                            ),
-                                            TextFormField(
-                                              controller: passwordController,
-                                              decoration: InputDecoration(
-                                                  labelText: 'Password'),
-                                              obscureText: true,
-                                              onChanged: (value) {
-                                                setState(() {
-                                                  name2 = value;
-                                                });
-                                              },
-                                              validator: (value) {
-                                                if (value.isEmpty) {
-                                                  return 'invalid password';
-                                                }
-                                                return null;
-                                              },
-                                            ),
-                                            SizedBox(height: MediaQuery.of(context).size.height * .05,),
-                                            RaisedButton(
-                                              child: Text('Submit'),
-                                              onPressed: () {
+            child: Container(
+                width: MediaQuery.of(context).size.width,
+                height: MediaQuery.of(context).size.height,
+                child: FutureBuilder(
+                    future: LoadStories(),
+                    builder: (BuildContext context,
+                        AsyncSnapshot<DocumentSnapshot> snapshot) {
+                      if (!snapshot.hasData) {
+                        return Center(child: new Text(''));
+                      } else {
+                        Map<String, dynamic> data = snapshot.data.data();
+                        String id = data['Id'];
+                        String password = data['password'];
+
+                        return Center(
+                            child: Card(
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(26.0),
+                                ),
+                                child: Material(
+                                  borderRadius: BorderRadius.circular(26.0),
+                                  elevation: 20.0,
+                                  shadowColor: Color(0x802196F3),
+                                  child: Container(
+                                      width: MediaQuery.of(context).size.width *
+                                          .7,
+                                      height:
+                                          MediaQuery.of(context).size.width *
+                                              .8,
+                                      padding: EdgeInsets.all(
+                                          MediaQuery.of(context).size.width *
+                                              .09),
+                                      child: Form(
+                                        key: _formKey,
+                                        child: SingleChildScrollView(
+                                            child: Column(children: <Widget>[
+                                          TextFormField(
+                                            controller: nameController,
+                                            decoration: InputDecoration(
+                                                labelText: 'Username'),
+                                            keyboardType:
+                                                TextInputType.emailAddress,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                name1 = value;
+                                              });
+                                            },
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return 'Enter id';
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                          TextFormField(
+                                            controller: passwordController,
+                                            decoration: InputDecoration(
+                                                labelText: 'Password'),
+                                            obscureText: true,
+                                            onChanged: (value) {
+                                              setState(() {
+                                                name2 = value;
+                                              });
+                                            },
+                                            validator: (value) {
+                                              if (value.isEmpty) {
+                                                return 'invalid password';
+                                              }
+                                              return null;
+                                            },
+                                          ),
+                                          SizedBox(
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                .05,
+                                          ),
+                                          RaisedButton(
+                                            child: Text('Submit'),
+                                            onPressed: () {
                                               //  print(id);
-                                               // print(password);
-                                                if (nameController.text == id &&
-                                                    passwordController.text ==
-                                                       password) {
-                                                  Navigator.push(
-                                                    context,
-                                                    MaterialPageRoute(
-                                                        builder: (context) =>
-                                                            ProfilePage()),
-                                                  );
-                                                } else {
-                                                  return Fluttertoast.showToast(
+                                              // print(password);
+                                              if (nameController.text == id &&
+                                                  passwordController.text ==
+                                                      password) {
+                                                Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (context) =>
+                                                          ProfilePage()),
+                                                );
+                                              } else {
+                                                return Fluttertoast.showToast(
                                                     msg: 'Invalid',
                                                     toastLength:
                                                         Toast.LENGTH_LONG,
@@ -130,25 +137,24 @@ class _State extends State<LoginPage> {
                                                         Colors.red[400],
                                                     textColor: Colors.white,
                                                     fontSize: 16.0);
-                                                }
-                                              },
-                                              shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                      BorderRadius.circular(30)),
-                                              color: Colors.grey,
-                                            ),
-                                          ])),
-                                        )),
-                                  )));
-                  }}
-            ))));                
-                  
-               
-          
-        
+                                              }
+                                            },
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(30)),
+                                            color: Colors.grey,
+                                          ),
+                                        ])),
+                                      )),
+                                )));
+                      }
+                    }))));
   }
-        Future<DocumentSnapshot> LoadStories() async{
-          return await FirebaseFirestore.instance
-                    .collection('proddecAdmin').doc('notification').get();
+
+  Future<DocumentSnapshot> LoadStories() async {
+    return await FirebaseFirestore.instance
+        .collection('proddecAdmin')
+        .doc('notification')
+        .get();
   }
 }

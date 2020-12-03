@@ -30,7 +30,6 @@ class _FirstPageState extends State<FirstPage> {
 
       await tokens.set({
         'token': fcmToken,
-       
       });
     }
   }
@@ -78,7 +77,7 @@ class _FirstPageState extends State<FirstPage> {
                         color: Colors.white,
                         child: ListView(
                           shrinkWrap: true,
-                         // physics: NeverScrollableScrollPhysics(),
+                          // physics: NeverScrollableScrollPhysics(),
                           children: <Widget>[
                             GestureDetector(
                               onTap: _launchURL1,
@@ -123,8 +122,7 @@ class _FirstPageState extends State<FirstPage> {
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) =>
-                                                    Notify()),
+                                                builder: (context) => Notify()),
                                           );
                                         },
                                         child: Text(
@@ -132,9 +130,9 @@ class _FirstPageState extends State<FirstPage> {
                                           style: TextStyle(
                                             fontFamily: 'Ubuntu',
                                             fontWeight: FontWeight.w400,
-                                            fontSize: SizeConfig
-                                                    .safeBlockHorizontal *
-                                                6,
+                                            fontSize:
+                                                SizeConfig.safeBlockHorizontal *
+                                                    6,
                                           ),
                                         )),
                                     FlatButton(
@@ -167,7 +165,7 @@ class _FirstPageState extends State<FirstPage> {
                                 ),
                               ),
                             ),
-SizedBox(
+                            SizedBox(
                               height: SizeConfig.safeBlockVertical * 2,
                             ),
                             Row(
@@ -175,7 +173,9 @@ SizedBox(
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
                                   Padding(
-                                    padding:  EdgeInsets.only(right:SizeConfig.safeBlockHorizontal * 3),
+                                    padding: EdgeInsets.only(
+                                        right:
+                                            SizeConfig.safeBlockHorizontal * 3),
                                     child: FlatButton(
                                       onPressed: _launchURL3,
                                       highlightColor: Colors.blue[300],
@@ -186,8 +186,10 @@ SizedBox(
                                               color: Colors.black, width: 1.0)),
                                       splashColor: Colors.black,
                                       child: Container(
-                                        height: SizeConfig.safeBlockVertical * 6,
-                                        width:SizeConfig.safeBlockHorizontal * 20,
+                                        height:
+                                            SizeConfig.safeBlockVertical * 6,
+                                        width:
+                                            SizeConfig.safeBlockHorizontal * 20,
                                         // margin: EdgeInsets.only(
                                         //     left: SizeConfig.safeBlockHorizontal * 4,
                                         //     right:SizeConfig.safeBlockHorizontal * 4),
@@ -202,7 +204,9 @@ SizedBox(
                                     ),
                                   ),
                                   Padding(
-                                    padding:  EdgeInsets.only(right:SizeConfig.safeBlockHorizontal * 1.5),
+                                    padding: EdgeInsets.only(
+                                        right: SizeConfig.safeBlockHorizontal *
+                                            1.5),
                                     child: FlatButton(
                                       highlightColor: Colors.blue[300],
                                       shape: RoundedRectangleBorder(
@@ -219,8 +223,10 @@ SizedBox(
                                             ));
                                       },
                                       child: Container(
-                                        width:SizeConfig.safeBlockHorizontal * 20,
-                                            height: SizeConfig.safeBlockVertical * 6,
+                                        width:
+                                            SizeConfig.safeBlockHorizontal * 20,
+                                        height:
+                                            SizeConfig.safeBlockVertical * 6,
                                         decoration: BoxDecoration(
                                           image: DecorationImage(
                                             image:
